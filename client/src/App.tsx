@@ -12,11 +12,9 @@ function Square( { letter, colors, onSquareClick } ) {
 }
 
  function Definition( { definition } ) {
-   return <div id="definition">
-    <p><b>definition: </b>
-    {definition}
-    </p>
-    </div>
+   return <>
+      <p><b>definition: </b> {definition}</p>
+    </>
  }
 
 function Word( { current_attempt, success}) {
@@ -90,12 +88,12 @@ function App() {
           setKeyboardColors(keyboard_colors)
         }
       }
-      setCurrentAttempt("");
     }
 
     if (current_attempt == current_word) {
+      if (!success)
+        setScore(score + 10);
       setSuccess(true);
-      setScore(score + 10);
       setMessage("Correct!");
       setTimeout(() => { setMessage(""); }, 3000);
     }
@@ -115,20 +113,22 @@ function App() {
   return (
     <>
       <div>
-        <div id="credits">Version: 0.1 - Game developed by <a href="https://github.com/cathoderay">Ronald Kaiser</a></div>
+        <div id="credits"><span>version: 0.1 - Game developed by <a href="https://github.com/cathoderay">Ronald Kaiser</a></span></div>
 
         {/* game name */}
-        <h1 className="logo">ERUDITE</h1>
+        <div id="logo"><h1>ERUDITE</h1></div>
 
 
         {/* definition */}
-        <Definition definition={ get_definition(current_word.toLowerCase()) }/>
+        <div id="definition">
+          <Definition definition={ get_definition(current_word.toLowerCase()) }/>
+        </div>
 
 
         {/* current word */}
-        <div className="word-container">
+        <div id="word-container">
           {/* status message */}
-          <div className="status">{message}</div>
+          <div id="status">{message}</div>
 
           <Word current_attempt={ current_attempt } current_word={ current_word } success = { success } />
 
@@ -136,16 +136,17 @@ function App() {
         </ div>
 
         <div id="score">score: {score}</div>
-
-        {/* keyboard */}
-        {
-          letters.map((name, index) => 
-            <Square key={letters[index]} colors={keyboard_colors} letter={letters[index]} onSquareClick={() => addLetter(letters[index])} />
-          )
-        }
+        <div id="keyboard-container">
+          {/* keyboard */}
+          {
+            letters.map((name, index) => 
+              <Square key={letters[index]} colors={keyboard_colors} letter={letters[index]} onSquareClick={() => addLetter(letters[index])} />
+            )
+          }
+        </div>
 
         {/* controls */}
-        <div></div>
+        <div id="controls"></div>
         <button key="check" onClick={checkAttempt} >check</ button>
         <button key="pick" onClick={restart}>pick another word</ button>
         <button key="delete" onClick={removeLetter}>delete</ button>

@@ -1,49 +1,20 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
   text-align: center;
 }
 
-.logo {
-  /* height: 6em; */
-  /* padding: 1.5em; */
+#logo {
   padding-bottom: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-  /* text-shadow: 1px 1px 2px #ddd; */
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 50px;
-  /* letter-spacing: -0.3rem; */
+  font-size: 2vw;
   color: #9ACD32;
   font-weight: bold;
   height: 50px;
 }
-/* @keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
 
-/* @media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-} */
-
-.card {
-  padding: 2em;
-}
-
-/* .read-the-docs {
-  color: #888;
-} */
-
-
-.word-container {
+#word-container {
   height: 120px;
 }
 
@@ -58,44 +29,7 @@
   margin: 5px;
 }
 
-/* mobile */
-/* .square {
-  font-size: 12px;
-  font-weight: bold;
-  width: 30px;
-  height: 30px;
-  margin: 2px;
-  padding: 2px;
-} */
-
-.square-unattempted {
-  background-color: #ddd;
-}
-
-.square-attempted-not-present {
-  background-color: #777;
-}
-
-.square-attempted-present {
-  background-color: #9ACD32 !important;
-}
-
-.word {
-  font-weight: bold;
-  background-color: #ccc;
-}
-
-/* mobile */
-/* .word {
-  font-weight: bold;
-  background-color: #bbb;
-  border-color: #333;
-  width: 50px;
-  height: 50px;
-  border: 3px;
-} */
-
-.status {
+#status {
   margin-top: 0;
   padding-top: 0;
   font-weight: bold;
@@ -119,9 +53,100 @@
   height: 50px;
 }
 
+#controls {
+  display:flex;
+}
+
+
 #score {
-  height: 50px;
+  height: 25px;
   color: #888; 
   font-weight: bold;
   font-size: 20px;
 }
+
+@media only screen and (max-width: 390px) {
+  #credits {
+    font-size: 10px;
+  }
+
+  #logo {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 4vw;
+    color: #9ACD32;
+    font-weight: bold;
+    padding-bottom: 0px;
+    height: 10vh;
+  }
+
+  #definition {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    height: 20vh;
+    font-size: 14px;
+  }
+
+  #status {
+    margin-top: 0;
+    padding-top: 0;
+    font-weight: bold;
+    color: #666;
+    font-family: verdana;
+    font-size: 10px;
+  }
+
+  #word-container {
+    height: 15vh;
+  }
+
+  #word-container .square {
+    font-size: 17px;
+    font-weight: bold;
+    width: 11vw;
+    height: 11vw;
+    padding: 0;
+  }
+
+  .square {
+    font-size: 10px;
+    font-weight: bold;
+    width: 6vw;
+    height: 10vw;
+    margin: 5px;
+    padding: 1vw;
+  }
+
+  #score {
+    height: 25px;
+    color: #888; 
+    font-weight: bold;
+    font-size: 15px;
+    height: 5vh;
+  }
+
+  #keyboard-container {
+    padding: 1em;
+  }
+
+  button {
+    font-size: 10px;
+  }
+}
+
+.square-unattempted {
+  background-color: #ddd;
+}
+
+.square-attempted-not-present {
+  background-color: #777;
+}
+
+.square-attempted-present {
+  background-color: #9ACD32 !important;
+}
+
+.word {
+  font-weight: bold;
+  background-color: #ccc;
+}
+
