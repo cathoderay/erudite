@@ -39,6 +39,6 @@ jobs:
         with:
           project: "erudite-demo"
           entrypoint: "server/main.ts"
-          root: "/"
+          root: ""
           
           
