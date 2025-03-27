@@ -1,0 +1,127 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  /* height: 6em; */
+  /* padding: 1.5em; */
+  padding-bottom: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+  /* text-shadow: 1px 1px 2px #ddd; */
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 50px;
+  /* letter-spacing: -0.3rem; */
+  color: #9ACD32;
+  font-weight: bold;
+  height: 50px;
+}
+/* @keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
+
+/* @media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+} */
+
+.card {
+  padding: 2em;
+}
+
+/* .read-the-docs {
+  color: #888;
+} */
+
+
+.word-container {
+  height: 120px;
+}
+
+.word {
+  color: #333;
+}
+
+.square {
+  font-size: 20px;
+  width: 80px;
+  height: 80px;
+  margin: 5px;
+}
+
+/* mobile */
+/* .square {
+  font-size: 12px;
+  font-weight: bold;
+  width: 30px;
+  height: 30px;
+  margin: 2px;
+  padding: 2px;
+} */
+
+.square-unattempted {
+  background-color: #ddd;
+}
+
+.square-attempted-not-present {
+  background-color: #777;
+}
+
+.square-attempted-present {
+  background-color: #9ACD32 !important;
+}
+
+.word {
+  font-weight: bold;
+  background-color: #ccc;
+}
+
+/* mobile */
+/* .word {
+  font-weight: bold;
+  background-color: #bbb;
+  border-color: #333;
+  width: 50px;
+  height: 50px;
+  border: 3px;
+} */
+
+.status {
+  margin-top: 0;
+  padding-top: 0;
+  font-weight: bold;
+  color: #666;
+  font-family: verdana;
+  font-size: 20px;
+}
+
+#credits {
+  position:absolute;
+  left: 0;
+  right: 0;
+  top:0;
+  background-color: #eee;
+  font-size: 15px;
+}
+
+#definition {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 50px;
+}
+
+#score {
+  height: 50px;
+  color: #888; 
+  font-weight: bold;
+  font-size: 20px;
+}
