@@ -81,7 +81,7 @@
   #definition {
     margin-top: 0px;
     margin-bottom: 0px;
-    height: 20vh;
+    height: 18vh;
     font-size: 14px;
     padding: 2em;
   }
@@ -92,7 +92,7 @@
     font-weight: bold;
     color: #666;
     font-family: verdana;
-    font-size: 10px;
+    font-size: 14px;
   }
 
   #word-container {
@@ -100,10 +100,10 @@
   }
 
   #word-container .square {
-    font-size: 17px;
+    font-size: 19px;
     font-weight: bold;
-    width: 11vw;
-    height: 11vw;
+    width: 13vw;
+    height: 16vw;
     padding: 0;
   }
 
@@ -129,7 +129,7 @@
   }
 
   button {
-    font-size: 10px;
+    font-size: 12px;
   }
 }
 
