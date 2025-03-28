@@ -9,9 +9,15 @@
   padding-bottom: 1.5em;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 2vh;
-  color: #9ACD32;
+  color: light-dark(#ccc, #777);
   font-weight: bold;
   height: 40px;
+}
+
+button {
+  color: light-dark(#000, #000);
+  background-color: light-dark(#ddd, #ddd);
+  margin: 10px;
 }
 
 #word-container {
@@ -56,14 +62,14 @@
   left: 0;
   right: 0;
   top:0;
-  background-color: #eee;
+  background-color: light-dark(#eee, #222);
   font-size: 15px;
 }
 
 #definition {
   margin-top: 20px;
   margin-bottom: 20px;
-  height: 10vh;
+  height: 20vh;
   font-size: 20px;
   padding-left: 5%;
   padding-right: 5%;
@@ -90,11 +96,9 @@
   #logo {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 4vw;
-    color: #9ACD32;
     font-weight: bold;
     padding-bottom: 0px;
     padding-bottom:5vh;
-    height: 4vh;
   }
 
   #definition {
@@ -103,8 +107,8 @@
     align-items: center;
     /* margin-top: 0px; */
     /* margin-bottom: 0px; */
-    height: 20vh;
     font-size: 16px;
+    height: 20vh;
     padding-left: 2em;
     padding-right: 2em;
 
@@ -114,7 +118,7 @@
     margin-top: 0;
     padding-top: 0;
     font-weight: bold;
-    color: #666;
+    color: light-dark(#666, #ddd);
     font-family: verdana;
     font-size: 14px;
   }
@@ -129,7 +133,6 @@
     width: 13vw;
     height: 16vw;
     padding: 0;
-    /* border: 4px solid #AAA; */
   }
 
   .square {
@@ -150,7 +153,8 @@
   }
 
   #keyboard-container {
-    padding: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
   }
 
   button {
