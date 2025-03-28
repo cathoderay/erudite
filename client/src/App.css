@@ -6,12 +6,10 @@
 }
 
 #logo {
-  padding-bottom: 1.5em;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 2vh;
   color: light-dark(#ccc, #444);
   font-weight: bold;
-  height: 40px;
 }
 
 button {
@@ -98,16 +96,12 @@ button {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 3vw;
     font-weight: bold;
-    padding-bottom: 0px;
-    padding-bottom:5vh;
   }
 
   #definition {
     display:grid;
     flex-direction: row;
     align-items: center;
-    /* margin-top: 0px; */
-    /* margin-bottom: 0px; */
     font-size: 16px;
     height: 20vh;
     padding-left: 2em;
@@ -125,7 +119,7 @@ button {
   }
 
   #word-container {
-    height: 15vh;
+    /* height: 15vh; */
   }
 
   #word-container .square {
