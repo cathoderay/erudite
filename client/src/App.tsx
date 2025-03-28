@@ -11,12 +11,6 @@ function Square( { letter, colors, onSquareClick } ) {
   return <button key={letter} className={`square ${color}`}  onClick={onSquareClick}>{letter}</ button>;
 }
 
- function Definition( { definition } ) {
-   return <>
-      <p>{definition}</p>
-    </>
- }
-
 function Word( { current_attempt, success}) {
   let color = "";
   if (success) color = "square-attempted-present"; 
@@ -113,31 +107,29 @@ function App() {
   return (
     <>
       <div>
-        <div id="credits"><span>version: 0.1 - Game developed by <a href="https://github.com/cathoderay">Ronald Kaiser</a></span></div>
+        <div id="credits">
+          <span>version: 0.1 - Game developed by <a href="https://github.com/cathoderay">Ronald Kaiser</a></span>
+        </div>
 
-        {/* game name */}
-        <div id="logo"><h1>ERUDITE</h1></div>
-
-
-        {/* definition */}
-        <div id="definition">
-          <Definition definition={ get_definition(current_word.toLowerCase()) }/>
+        <div id="logo">
+          <h1>ERUDITE</h1>
         </div>
 
 
-        {/* current word */}
+        <div id="definition">
+          <p>{ get_definition(current_word.toLowerCase()) }</p>
+        </div>
+
         <div id="word-container">
-          {/* status message */}
           <div id="status">{message}</div>
-
           <Word current_attempt={ current_attempt } current_word={ current_word } success = { success } />
-
-
         </ div>
 
-        <div id="score">score: {score}</div>
+        <div id="score">
+          <p>score: {score}</p>
+        </div>
+
         <div id="keyboard-container">
-          {/* keyboard */}
           {
             letters.map((name, index) => 
               <Square key={letters[index]} colors={keyboard_colors} letter={letters[index]} onSquareClick={() => addLetter(letters[index])} />
@@ -145,11 +137,11 @@ function App() {
           }
         </div>
 
-        {/* controls */}
-        <div id="controls"></div>
-        <button key="check" onClick={checkAttempt} >check</ button>
-        <button key="pick" onClick={restart}>pick another word</ button>
-        <button key="delete" onClick={removeLetter}>delete</ button>
+        <div id="controls">
+          <button key="check" onClick={checkAttempt} >check</ button>
+          <button key="pick" onClick={restart}>pick another word</ button>
+          <button key="delete" onClick={removeLetter}>delete</ button>
+        </div>
       </div>
     </>
   );
