@@ -1,6 +1,5 @@
 #root {
   max-width: 700px;
-  margin: 0 auto;
   text-align: center;
   /* padding: 1em; */
 }
@@ -19,7 +18,7 @@ button {
 }
 
 #word-container {
-  height: 120px;
+  /* height: 120px; */
 }
 
 .word {
@@ -43,7 +42,7 @@ button {
   max-height: 70px;
   width: 8vw;
   height: 11vw;
-  margin: 5px;
+  margin: 2px;
   font-weight: bold;
 }
 
@@ -123,7 +122,7 @@ button {
     width: 13vw;
     height: 16vw;
     padding: 0;
-    margin: 5px;
+    margin-left: 5px;
   }
 
   .square {
@@ -131,7 +130,7 @@ button {
     font-weight: bold;
     width: 8vw;
     height: 11vw;
-    margin: 5px;
+    margin: 2px;
     padding: 1vw;
   }
 
