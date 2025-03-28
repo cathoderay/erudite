@@ -52,8 +52,11 @@
 #definition {
   margin-top: 20px;
   margin-bottom: 20px;
-  height: 50px;
+  height: 10vh;
   border-radius: 20px;
+  display:grid;
+  flex-direction: row;
+  align-items: center;
 }
 
 #score {
