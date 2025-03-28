@@ -13,7 +13,7 @@ function Square( { letter, colors, onSquareClick } ) {
 
  function Definition( { definition } ) {
    return <>
-      <p><b>definition: </b> {definition}</p>
+      <p>{definition}</p>
     </>
  }
 
@@ -48,7 +48,7 @@ function App() {
   }
 
   function removeLetter() {
-    if (current_attempt.length == 0)
+    if (current_attempt.length == 0 || success)
       return
     setSuccess(false);
     setCurrentAttempt(current_attempt.substring(0, current_attempt.length-1))
