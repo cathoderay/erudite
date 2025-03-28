@@ -9,14 +9,14 @@
   padding-bottom: 1.5em;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 2vh;
-  color: light-dark(#ccc, #777);
+  color: light-dark(#ccc, #444);
   font-weight: bold;
   height: 40px;
 }
 
 button {
-  color: light-dark(#000, #000);
-  background-color: light-dark(#ddd, #ddd);
+  color: light-dark(#000, #fff);
+  background-color: light-dark(#ddd, #666);
   margin: 10px;
 }
 
@@ -25,7 +25,7 @@ button {
 }
 
 .word {
-  color: #333;
+  color: light-dark(#333, #fff);
 }
 
 #word-container .square {
@@ -46,6 +46,7 @@ button {
   width: 8vw;
   height: 11vw;
   margin: 5px;
+  font-weight: bold;
 }
 
 #status {
@@ -95,7 +96,7 @@ button {
 
   #logo {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 4vw;
+    font-size: 3vw;
     font-weight: bold;
     padding-bottom: 0px;
     padding-bottom:5vh;
@@ -128,11 +129,12 @@ button {
   }
 
   #word-container .square {
-    font-size: 24px;
+    font-size: 28px;
     font-weight: bold;
     width: 13vw;
     height: 16vw;
     padding: 0;
+    margin: 5px;
   }
 
   .square {
@@ -163,11 +165,11 @@ button {
 }
 
 .square-unattempted {
-  background-color: #ddd;
+  background-color: light-dark(#ddd, #888);
 }
 
 .square-attempted-not-present {
-  background-color: #777;
+  background-color: light-dark(#777, #333);
 }
 
 .square-attempted-present {
@@ -176,6 +178,6 @@ button {
 
 .word {
   font-weight: bold;
-  background-color: #ccc;
+  background-color: light-dark(#ccc, #666);
 }
 
