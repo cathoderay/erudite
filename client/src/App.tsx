@@ -21,7 +21,6 @@ function Word( { current_attempt, success}) {
     <button key="2" className={`square word ${color}`}>{current_attempt.length > 2 ? current_attempt[2]: ''}</button>
     <button key="3" className={`square word ${color}`}>{current_attempt.length > 3 ? current_attempt[3]: ''}</button>
     <button key="4" className={`square word ${color}`}>{current_attempt.length > 4 ? current_attempt[4]: ''}</button>
-    <p></p>
   </>
 }
 

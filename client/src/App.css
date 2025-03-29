@@ -2,7 +2,6 @@
   max-width: 700px;
   text-align: center;
   margin: 0 auto;
-  /* padding: 1em; */
 }
 
 #logo {
@@ -27,7 +26,11 @@ button {
 }
 
 #word-container {
-  height: 15vh;
+  height: 12vh;
+}
+
+h1 {
+  margin: 0;
 }
 
 #word-container .square {
@@ -86,6 +89,7 @@ button {
   padding-right: 5%;
   border-radius: 20px;
   display:grid;
+  margin-top: 0;
   flex-direction: row;
   align-items: center;
   margin-left: 10px;
@@ -126,15 +130,10 @@ button {
     font-size: 14px;
   }
 
-  #word-container {
-    /* height: 15vh; */
-  }
-
   #word-container .square {
     font-size: 28px;
     font-weight: bold;
     width: 13vw;
-    height: 16vw;
     padding: 0;
     margin-left: 5px;
   }
