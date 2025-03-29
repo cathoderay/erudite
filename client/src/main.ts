@@ -1,4 +1,4 @@
-import dictionary from "./dictionary.json" with { type: "json" };
+import dictionary from "./dictionary5.json" with { type: "json" };
 
 
 export type definition = {
