@@ -9,7 +9,7 @@ import { is_valid } from "./main.ts";
 function Square( { letter, colors, onSquareClick } ) {
   let color = letter.length > 0 && colors != null ? colors[letter.charCodeAt(0) - "A".charCodeAt(0)] : "";
 
-  return <button key={letter} className={`square ${color}`}  onClick={onSquareClick}>{letter}</ button>;
+  return <button key={letter} className={`square ${color}`} onClick={onSquareClick}>{letter}</ button>;
 }
 
 function Word( { current_attempt, success}) {
