@@ -18,12 +18,16 @@ button {
   margin: 10px;
 }
 
-#word-container {
-  /* height: 120px; */
-}
-
 .word {
   color: light-dark(#333, #fff);
+}
+
+#status {
+  height: 2vh;
+}
+
+#word-container {
+  height: 15vh;
 }
 
 #word-container .square {
@@ -65,8 +69,18 @@ button {
   font-size: 15px;
 }
 
+/* #controls {
+  position: absolute;
+  bottom:0;
+  left:0;
+  right: 0;
+  margin-left: 5%;
+  margin-right: 5%;
+
+} */
+
 #definition {
-  height: 20vh;
+  height: 25vh;
   font-size: 20px;
   padding-left: 5%;
   padding-right: 5%;
@@ -100,7 +114,6 @@ button {
     flex-direction: row;
     align-items: center;
     font-size: 16px;
-    height: 20vh;
     padding-left: 2em;
     padding-right: 2em;
 

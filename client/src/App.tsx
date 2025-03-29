@@ -5,6 +5,7 @@ import { get_definition } from "./main.ts";
 import { is_valid } from "./main.ts";
 
 
+
 function Square( { letter, colors, onSquareClick } ) {
   let color = letter.length > 0 && colors != null ? colors[letter.charCodeAt(0) - "A".charCodeAt(0)] : "";
 
@@ -57,7 +58,7 @@ function App() {
     }
 
     if ( !is_valid(current_attempt.toLowerCase()) ) {
-      setMessage("Invalid");
+      setMessage("Not in word list");
       setTimeout(() => { setMessage(""); }, 3000);
       return;
     }
@@ -104,8 +105,15 @@ function App() {
 
   console.log(current_word);
 
+
   return (
     <>
+
+    {/* <div style={{ width: '40%', height: '40vh', position: 'relative', zIndex: 10}}>
+      <Fireworks autorun={{speed: 3, duration: 20000}} />
+      <p>test</p>
+    </div> */}
+
       <div>
         <div id="credits">
           <span>version: 0.1 - Game developed by <a href="https://github.com/cathoderay">Ronald Kaiser</a></span>
@@ -121,23 +129,23 @@ function App() {
         </div>
 
         <div id="word-container">
-          <div id="status">{message}</div>
           <Word current_attempt={ current_attempt } current_word={ current_word } success = { success } />
+          <div id="status">{message}</div>
         </ div>
 
         <div id="score">
           <p>score: {score}</p>
         </div>
 
-        <div id="keyboard-container">
-          {
-            letters.map((name, index) => 
-              <Square key={letters[index]} colors={keyboard_colors} letter={letters[index]} onSquareClick={() => addLetter(letters[index])} />
-            )
-          }
-        </div>
-
         <div id="controls">
+          <div id="keyboard-container">
+            {
+              letters.map((name, index) => 
+                <Square key={letters[index]} colors={keyboard_colors} letter={letters[index]} onSquareClick={() => addLetter(letters[index])} />
+              )
+            }
+          </div>
+
           <button key="check" onClick={checkAttempt} >check</ button>
           <button key="pick" onClick={restart}>pick another word</ button>
           <button key="delete" onClick={removeLetter}>delete</ button>
