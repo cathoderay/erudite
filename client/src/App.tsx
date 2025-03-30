@@ -5,7 +5,6 @@ import { get_definition } from "./main.ts";
 import { is_valid } from "./main.ts";
 
 
-
 function Square( { letter, colors, onSquareClick } ) {
   let color = letter.length > 0 && colors != null ? colors[letter.charCodeAt(0) - "A".charCodeAt(0)] : "";
 
@@ -107,12 +106,6 @@ function App() {
 
   return (
     <>
-
-    {/* <div style={{ width: '40%', height: '40vh', position: 'relative', zIndex: 10}}>
-      <Fireworks autorun={{speed: 3, duration: 20000}} />
-      <p>test</p>
-    </div> */}
-
       <div>
         <div id="credits">
           <span>version: 0.1 - Game developed by <a href="https://github.com/cathoderay">Ronald Kaiser</a></span>
@@ -121,7 +114,6 @@ function App() {
         <div id="logo">
           <h1>ERUDITE</h1>
         </div>
-
 
         <div id="definition">
           <p>{ get_definition(current_word.toLowerCase()) }</p>

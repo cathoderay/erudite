@@ -73,7 +73,8 @@ h1 {
 }
 
 #definition {
-  height: 25vh;
+  height: 15vh;
+
   font-size: 20px;
   padding-left: 5%;
   padding-right: 5%;
@@ -84,6 +85,9 @@ h1 {
   align-items: center;
   margin-left: 10px;
   margin-right: 10px;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  /* background-color: #ccc; */
 }
 
 #score {
@@ -100,7 +104,6 @@ h1 {
 
   #logo {
     font-size: 3vw;
-    font-weight: bold;
   }
 
   #definition {
@@ -110,7 +113,6 @@ h1 {
     font-size: 16px;
     padding-left: 2em;
     padding-right: 2em;
-
   }
 
   #status {
@@ -171,4 +173,3 @@ h1 {
   font-weight: bold;
   background-color: light-dark(#ccc, #666);
 }
-
