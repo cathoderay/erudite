@@ -36,6 +36,15 @@ function Logo() {
   </>
 }
 
+function Credits() {
+  return <>
+    <div id="credits">
+      <span>version: 0.1 - Game developed by <a href="https://github.com/cathoderay">Ronald Kaiser</a></span>
+    </div>
+  </>
+
+}
+
 function Definition( { word, definition }) {
   return <>
     <div id="definition" key={word} >
@@ -134,9 +143,7 @@ function App() {
   return (
     <>
       <div>
-        <div id="credits">
-          <span>version: 0.1 - Game developed by <a href="https://github.com/cathoderay">Ronald Kaiser</a></span>
-        </div>
+        <Credits />
 
         <Logo />
         <Definition word={current_word} definition={current_definition} /> 
