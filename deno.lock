@@ -23,6 +23,7 @@
     "npm:@types/node@*": "22.5.4",
     "npm:@types/react@^18.3.12": "18.3.12",
     "npm:@vitejs/plugin-react@^4.3.3": "4.3.3_vite@5.4.11__@types+node@22.5.4_@babel+core@7.26.0_@types+node@22.5.4",
+    "npm:animate.css@^4.1.1": "4.1.1",
     "npm:path-to-regexp@6.2.1": "6.2.1",
     "npm:react-dom@^18.3.1": "18.3.1_react@18.3.1",
     "npm:react-router-dom@^6.28.0": "6.28.0_react@18.3.1_react-dom@18.3.1__react@18.3.1",
@@ -463,6 +464,9 @@
         "vite"
       ]
     },
+    "animate.css@4.1.1": {
+      "integrity": "sha512-+mRmCTv6SbCmtYJCN4faJMNFVNN5EuCTTprDTAo7YzIGji2KADmakjVA3+8mVDkZ2Bf09vayB35lSQIex2+QaQ=="
+    },
     "browserslist@4.24.2": {
       "integrity": "sha512-ZIc+Q62revdMcqC6aChtW4jz3My3klmCO1fEmINZY/8J3EpBg5/A/D0AKmBveUh6pgoeycoMkVMko84tuYS+Gg==",
       "dependencies": [
@@ -676,6 +680,7 @@
       "npm:@deno/vite-plugin@1",
       "npm:@types/react@^18.3.12",
       "npm:@vitejs/plugin-react@^4.3.3",
+      "npm:animate.css@^4.1.1",
       "npm:react-dom@^18.3.1",
       "npm:react-router-dom@^6.28.0",
       "npm:react@^18.3.1",

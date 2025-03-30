@@ -3,6 +3,7 @@ import "./App.css";
 import { pick_random_word } from "./main.ts";
 import { get_definition } from "./main.ts";
 import { is_valid } from "./main.ts";
+import "animate.css";
 
 
 function Square( { letter, colors, onSquareClick } ) {
@@ -13,18 +14,39 @@ function Square( { letter, colors, onSquareClick } ) {
 
 function Word( { current_attempt, success}) {
   let color = "";
-  if (success) color = "square-attempted-present"; 
+  let success_animation = "";
+  if (success) {
+    color = "square-attempted-present"; 
+    success_animation = "animate__animated animate__flip";
+  }
   return <>
-    <button key="0" className={`square word ${color}`}>{current_attempt.length > 0 ? current_attempt[0]: ''}</button>
-    <button key="1" className={`square word ${color}`}>{current_attempt.length > 1 ? current_attempt[1]: ''}</button>
-    <button key="2" className={`square word ${color}`}>{current_attempt.length > 2 ? current_attempt[2]: ''}</button>
-    <button key="3" className={`square word ${color}`}>{current_attempt.length > 3 ? current_attempt[3]: ''}</button>
-    <button key="4" className={`square word ${color}`}>{current_attempt.length > 4 ? current_attempt[4]: ''}</button>
+    <button key="0" className={`square word ${color} ${success_animation}`}>{current_attempt.length > 0 ? current_attempt[0]: ''}</button>
+    <button key="1" className={`square word ${color} ${success_animation}`}>{current_attempt.length > 1 ? current_attempt[1]: ''}</button>
+    <button key="2" className={`square word ${color} ${success_animation}`}>{current_attempt.length > 2 ? current_attempt[2]: ''}</button>
+    <button key="3" className={`square word ${color} ${success_animation}`}>{current_attempt.length > 3 ? current_attempt[3]: ''}</button>
+    <button key="4" className={`square word ${color} ${success_animation}`}>{current_attempt.length > 4 ? current_attempt[4]: ''}</button>
+  </>
+}
+
+function Logo() {
+  return <>
+    <div id="logo" className="animate__animated animate__slideInDown">
+      <h1>ERUDITE</h1>
+    </div>
+  </>
+}
+
+function Definition( { word, definition }) {
+  return <>
+    <div id="definition" key={word} >
+      <p className="animate__animated animate__fadeInDown">{ definition }</p>
+    </div>
   </>
 }
 
 function App() {
   const [current_word, setCurrentWord] = useState(pick_random_word(5).toUpperCase());
+  const [current_definition, setCurrentDefinition] = useState(get_definition(current_word.toLowerCase()));
   const [score, setScore] = useState(0);
   const [success, setSuccess] = useState(false);
   const [current_attempt, setCurrentAttempt] = useState('');
@@ -63,7 +85,10 @@ function App() {
 
     if (current_attempt != current_word) {
       setMessage("Incorrect");
-      setTimeout(() => { setMessage(""); }, 3000);
+    
+      setTimeout(() => { 
+        setMessage("");
+      }, 3000);
 
       setAttempts([
         ...attempts,
@@ -96,7 +121,9 @@ function App() {
     setSuccess(false);
     setMessage("");
     setTimeout(() => { setMessage(""); }, 3000);
-    setCurrentWord(pick_random_word(5).toUpperCase());
+    const new_word = pick_random_word(5).toUpperCase();
+    setCurrentWord(new_word);
+    setCurrentDefinition(get_definition(new_word.toLowerCase()));
     setCurrentAttempt("");
     setKeyboardColors(Array(26).fill("square-unattempted"));
   }
@@ -111,13 +138,8 @@ function App() {
           <span>version: 0.1 - Game developed by <a href="https://github.com/cathoderay">Ronald Kaiser</a></span>
         </div>
 
-        <div id="logo">
-          <h1>ERUDITE</h1>
-        </div>
-
-        <div id="definition">
-          <p>{ get_definition(current_word.toLowerCase()) }</p>
-        </div>
+        <Logo />
+        <Definition word={current_word} definition={current_definition} /> 
 
         <div id="word-container">
           <Word current_attempt={ current_attempt } current_word={ current_word } success = { success } />

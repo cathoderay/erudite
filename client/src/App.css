@@ -75,7 +75,7 @@ h1 {
 #definition {
   height: 20vh;
 
-  font-size: 20px;
+  font-size: 24px;
   padding-left: 5%;
   padding-right: 5%;
   border-radius: 20px;
@@ -173,3 +173,4 @@ h1 {
   font-weight: bold;
   background-color: light-dark(#ccc, #666);
 }
+
