@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import "./App.css";
 import { pick_random_word } from "./main.ts";
 import { get_definition } from "./main.ts";
 import { is_valid } from "./main.ts";
 import "animate.css";
-
 
 function Square( { letter, colors, onSquareClick } ) {
   let color = letter.length > 0 && colors != null ? colors[letter.charCodeAt(0) - "A".charCodeAt(0)] : "";
@@ -52,6 +51,21 @@ function Definition( { word, definition }) {
     </div>
   </>
 }
+
+const useEventListener = (eventName, handler, element = window) => {
+  const savedHandler = useRef();
+  useEffect(() => {
+    savedHandler.current = handler;
+  }, [handler]);
+  useEffect(() => {
+    const eventListener = (event) => savedHandler.current(event);
+    element.addEventListener(eventName, eventListener);
+    return () => {
+      element.removeEventListener(eventName, eventListener);
+    };
+  }, [eventName, element]);
+};
+
 
 function App() {
   const [current_word, setCurrentWord] = useState(pick_random_word(5).toUpperCase());
@@ -139,6 +153,23 @@ function App() {
 
   console.log(current_word);
 
+  const handler = ({ key }) => {
+    console.log("Key Pressed: " + String(key));
+    if (current_attempt.length < current_word.length && (letters.includes(key) || letters.includes(key.toUpperCase()))) {
+      setCurrentAttempt(current_attempt + key.toUpperCase())
+    }
+    else if (key == "Backspace" && !success) {
+      if (current_attempt.length > 0)
+        setCurrentAttempt(current_attempt.substring(0, current_attempt.length - 1))
+    }
+    else if (key == "Enter") {
+      checkAttempt();
+    }
+    else if (key == "Escape") {
+      restart();
+    }
+  };
+  useEventListener("keydown", handler);
 
   return (
     <>
