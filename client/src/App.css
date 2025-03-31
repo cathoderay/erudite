@@ -8,7 +8,7 @@
 #logo {
   letter-spacing: -0.1em;
   font-size: 2vh;
-  color: light-dark(#ddd, #444);
+  color: light-dark(#ddd, #ddd);
 }
 
 button {
