@@ -64,7 +64,7 @@ h1 {
 
 #credits {
   position:absolute;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid light-dark(#ccc, #333);
   left: 0;
   right: 0;
   top:0;
@@ -75,7 +75,7 @@ h1 {
 #definition {
   height: 20vh;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 24px;
   padding-left: 5%;
   padding-right: 5%;

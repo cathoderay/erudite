@@ -4,7 +4,7 @@
   font-weight: bolder;
 
   color-scheme: light dark;
-  color: light-dark(#000, #fff);
+  color: light-dark(#444, #ddd);
   background-color: #242424;
 
   font-synthesis: none;
