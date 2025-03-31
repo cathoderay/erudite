@@ -6,14 +6,13 @@
 }
 
 #logo {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
   letter-spacing: -0.1em;
   font-size: 2vh;
   color: light-dark(#ddd, #444);
-  font-weight: bold;
 }
 
 button {
+  font-weight: bold;
   color: light-dark(#000, #fff);
   background-color: light-dark(#ddd, #666);
   margin: 10px;
@@ -37,7 +36,7 @@ h1 {
 
 #word-container .square {
   font-size: 35px;
-  font-weight: bold;
+  font-weight: bolder;
   max-width: 70px;
   max-height: 90px;
   width: 13vw;
@@ -47,18 +46,17 @@ h1 {
 
 .square {
   font-size: 20px;
+  font-weight: bolder;
   max-width: 60px;
   max-height: 70px;
   width: 8vw;
   height: 11vw;
   margin: 2px;
-  font-weight: bold;
 }
 
 #status {
   margin-top: 0;
   padding-top: 0;
-  font-weight: bold;
   color: #666;
   font-family: verdana;
   font-size: 20px;
@@ -76,7 +74,7 @@ h1 {
 
 #definition {
   height: 20vh;
-
+  font-weight: 700;
   font-size: 24px;
   padding-left: 5%;
   padding-right: 5%;
@@ -95,7 +93,6 @@ h1 {
 #score {
   height: 25px;
   color: #888; 
-  font-weight: bold;
   font-size: 20px;
 }
 
@@ -119,7 +116,6 @@ h1 {
   }
 
   #status {
-    font-weight: bold;
     color: light-dark(#666, #ddd);
     font-family: verdana;
     font-size: 14px;
@@ -127,7 +123,6 @@ h1 {
 
   #word-container .square {
     font-size: 28px;
-    font-weight: bold;
     width: 13vw;
     padding: 0;
     margin-left: 5px;
@@ -135,7 +130,6 @@ h1 {
 
   .square {
     font-size: 14px;
-    font-weight: bold;
     width: 8vw;
     height: 11vw;
     margin: 2px;
@@ -145,7 +139,6 @@ h1 {
   #score {
     height: 25px;
     color: #888; 
-    font-weight: bold;
     font-size: 15px; 
     height: 5vh;
   }
@@ -173,7 +166,6 @@ h1 {
 }
 
 .word {
-  font-weight: bold;
   background-color: light-dark(#ccc, #666);
 }
 

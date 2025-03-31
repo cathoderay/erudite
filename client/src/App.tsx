@@ -30,7 +30,7 @@ function Word( { current_attempt, success}) {
 function Logo() {
   return <>
     <div id="logo" className="animate__animated animate__swing">
-      <h1><img src="./owl.png" width="10%" height="10%"></img> ERUDITE</h1>
+      <h1><img src="./owl.png" width="10%" height="10%"></img> erudite</h1>
     </div>
   </>
 }
