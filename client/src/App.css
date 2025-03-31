@@ -161,7 +161,7 @@ h1 {
 }
 
 .square-unattempted {
-  background-color: light-dark(#ddd, #888);
+  background-color: light-dark(#ddd, #666);
 }
 
 .square-attempted-not-present {
