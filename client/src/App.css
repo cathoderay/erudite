@@ -74,7 +74,8 @@ h1 {
 
 #definition {
   height: 20vh;
-  font-weight: 700;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: 500;
   font-size: 24px;
   padding-left: 5%;
   padding-right: 5%;
@@ -88,7 +89,11 @@ h1 {
   margin-top: 3vh;
   margin-bottom: 3vh;
   background-color: light-dark(#eee, #333);
+
+  --animate-duration: 500ms;
+  --animate-delay: 0.5s;
 }
+
 
 #score {
   height: 25px;

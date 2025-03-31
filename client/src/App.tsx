@@ -46,7 +46,7 @@ function Credits() {
 
 function Definition( { word, definition }) {
   return <>
-    <div id="definition" key={word} className="animate__animated animate__fadeInRight">
+    <div id="definition" key={word} className="animate__animated animate__fadeInDown">
       <p >{ definition }</p>
     </div>
   </>
