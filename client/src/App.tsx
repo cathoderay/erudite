@@ -29,8 +29,8 @@ function Word( { current_attempt, success}) {
 
 function Logo() {
   return <>
-    <div id="logo" className="animate__animated animate__slideInDown">
-      <h1>ERUDITE</h1>
+    <div id="logo" className="animate__animated animate__swing">
+      <h1><img src="./owl.png" width="20%" height="20%"></img> ERUDITE</h1>
     </div>
   </>
 }
@@ -38,7 +38,7 @@ function Logo() {
 function Credits() {
   return <>
     <div id="credits">
-      <span>version: 0.1 - Game developed by <a href="https://github.com/cathoderay">Ronald Kaiser</a></span>
+      <p>Owl created by <a href="https://www.flaticon.com/free-icons/owl" title="owl icons">Freepik - Flaticon</a> | Game developed by <a href="https://github.com/cathoderay">Ronald Kaiser</a></p>
     </div>
   </>
 
@@ -46,8 +46,8 @@ function Credits() {
 
 function Definition( { word, definition }) {
   return <>
-    <div id="definition" key={word} >
-      <p className="animate__animated animate__fadeInDown">{ definition }</p>
+    <div id="definition" key={word} className="animate__animated animate__fadeInRight">
+      <p >{ definition }</p>
     </div>
   </>
 }

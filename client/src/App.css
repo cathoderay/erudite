@@ -2,6 +2,7 @@
   max-width: 700px;
   text-align: center;
   margin: 0 auto;
+
 }
 
 #logo {
@@ -65,11 +66,12 @@ h1 {
 
 #credits {
   position:absolute;
+  border-bottom: 1px solid #ccc;
   left: 0;
   right: 0;
   top:0;
-  background-color: light-dark(#eee, #222);
-  font-size: 15px;
+  background-color: light-dark(#eee, #333);
+  font-size: 10px;
 }
 
 #definition {
@@ -87,7 +89,7 @@ h1 {
   margin-right: 10px;
   margin-top: 3vh;
   margin-bottom: 3vh;
-  /* background-color: #ccc; */
+  background-color: light-dark(#eee, #333);
 }
 
 #score {
@@ -96,6 +98,7 @@ h1 {
   font-weight: bold;
   font-size: 20px;
 }
+
 
 @media only screen and (max-width: 768px) {
   #credits {
