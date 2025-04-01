@@ -1,19 +1,38 @@
 Erudite
 =======
-A simple word game inspired by Wordle.
+A simple word game (inspired by daily [NYT games](https://www.nytco.com/products/games/), specially [Wordle](https://www.nytimes.com/games/wordle/index.html)).
+
+I'm developing this game for some reasons: 
+1. improve my vocabulary;
+2. practice some javascript/typescript (specially interested in the promising [deno](https://github.com/denoland) runtime);
+3. Having fun.
 
 How it works
 ------------
-You have to figure out what is the word based on the definition presented. 
+You have to figure out what is the word based on the definition presented.
+
 If you make an incorrect guess, any correct letter will be highlighted in green in the keyboard.
 
-Desktop version allows you to just type the word and press `Enter` key to check the solution.
-Also, pressing `Esc` will pick another word.
+Desktop version allows you to:
+1. simply type the word with your keyboard;
+2. delete a letter by pressing `Backspace`;
+3. check if word is correct by pressing `Enter`;
+4. pick another word/definition by pressing `Esc`.
 
-Source
-------
-List of words is a subset of https://www-cs-faculty.stanford.edu/~knuth/sgb-words.txt with definitions coming from wordnet through nltk.
-
-Try it out
+Demo
 ----------
 Go to https://erudite-demo.deno.dev
+
+Dataset
+------
+The list of words is a subset of https://www-cs-faculty.stanford.edu/~knuth/sgb-words.txt.
+
+The definitions come from wordnet through nltk.
+
+Contributions/collaborations
+----------------------------
+This is a work in progress. 
+
+Any suggestions and collaborations are welcome!
+
+Let's get in touch!
