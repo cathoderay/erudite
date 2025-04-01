@@ -1,7 +1,12 @@
 import dictionary from "./dictionary5.json" with { type: "json" };
 
 
-export type definition = {
+export interface Term {
+    word: string;
+    definition: string;
+  }
+
+export type Dictionary = {
     [key: string]: string
 }
 
@@ -38,14 +43,28 @@ export function get_attempted_letters(words: string[]) : Set<String> {
 }
 
 export function get_definition(word: string) : string {
-    let dict: definition = dictionary;
-    let def = dict[word as keyof definition]
+    let dict: Dictionary = dictionary;
+    let def = dict[word as keyof Dictionary]
     let pos = def.indexOf("\n");
     let result = def.substring(0, pos != - 1 ? Math.min(pos + 1, 180) : Math.min(def.length, 180));
     if (result.length < def.length)
         result += "...";
     return result
  }
+
+export function get_term(word: string): Term {
+    const term: Term = {
+        word: word,
+        definition: get_definition(word)
+    }
+    return term;
+}
+
+export function get_random_term(length: number): Term {
+    const word: string = pick_random_word(length);
+    return get_term(word)
+}
+ 
 
  export function is_valid(word: string) : boolean {
    return word in dictionary; 

@@ -1,17 +1,18 @@
 import { useState, useRef, useEffect } from "react";
+
 import "./App.css";
-import { pick_random_word } from "./main.ts";
-import { get_definition } from "./main.ts";
 import { is_valid } from "./main.ts";
+import { get_random_term } from "./main.ts";
+
 import "animate.css";
+
 
 function Square( { letter, colors, onSquareClick } ) {
   let color = letter.length > 0 && colors != null ? colors[letter.charCodeAt(0) - "A".charCodeAt(0)] : "";
-
   return <button key={letter} className={`square ${color}`} onClick={onSquareClick}>{letter}</ button>;
 }
 
-function Word( { current_attempt, success}) {
+function Word( { attempt, success } ) {
   let color = "";
   let success_animation = "";
   if (success) {
@@ -19,11 +20,11 @@ function Word( { current_attempt, success}) {
     success_animation = "animate__animated animate__flip";
   }
   return <>
-    <button key="0" className={`square word ${color} ${success_animation}`}>{current_attempt.length > 0 ? current_attempt[0]: ''}</button>
-    <button key="1" className={`square word ${color} ${success_animation}`}>{current_attempt.length > 1 ? current_attempt[1]: ''}</button>
-    <button key="2" className={`square word ${color} ${success_animation}`}>{current_attempt.length > 2 ? current_attempt[2]: ''}</button>
-    <button key="3" className={`square word ${color} ${success_animation}`}>{current_attempt.length > 3 ? current_attempt[3]: ''}</button>
-    <button key="4" className={`square word ${color} ${success_animation}`}>{current_attempt.length > 4 ? current_attempt[4]: ''}</button>
+    <button key="0" className={`square word ${color} ${success_animation}`}>{attempt.length > 0 ? attempt[0]: ''}</button>
+    <button key="1" className={`square word ${color} ${success_animation}`}>{attempt.length > 1 ? attempt[1]: ''}</button>
+    <button key="2" className={`square word ${color} ${success_animation}`}>{attempt.length > 2 ? attempt[2]: ''}</button>
+    <button key="3" className={`square word ${color} ${success_animation}`}>{attempt.length > 3 ? attempt[3]: ''}</button>
+    <button key="4" className={`square word ${color} ${success_animation}`}>{attempt.length > 4 ? attempt[4]: ''}</button>
   </>
 }
 
@@ -41,14 +42,30 @@ function Credits() {
       <p>Owl created by <a href="https://www.flaticon.com/free-icons/owl" title="owl icons">Freepik - Flaticon</a> | Game developed by <a href="https://github.com/cathoderay">Ronald Kaiser</a></p>
     </div>
   </>
-
 }
 
-function Definition( { word, definition }) {
+function Score( { score } ) {
   return <>
-    <div id="definition" key={word} className="animate__animated animate__fadeInDown">
-      <p >{ definition }</p>
+    <div id="score">
+      <p>score: {score}</p>
     </div>
+  </>
+}
+
+function Definition( { term, definition }) {
+  return <>
+    <div id="definition" key={ term.word } className="animate__animated animate__fadeInDown">
+      <p >{ term.definition }</p>
+    </div>
+  </>
+}
+
+function WordContainer({ attempt, success, status }) {
+  return <>
+    <div id="word-container">
+      <Word attempt={ attempt } success={ success } />
+      <div id="status">{ status }</div>
+    </ div>
   </>
 }
 
@@ -68,99 +85,94 @@ const useEventListener = (eventName, handler, element = window) => {
 
 
 function App() {
-  const [current_word, setCurrentWord] = useState(pick_random_word(5).toUpperCase());
-  const [current_definition, setCurrentDefinition] = useState(get_definition(current_word.toLowerCase()));
+  const [term, setTerm] = useState(get_random_term(5));
   const [score, setScore] = useState(0);
   const [success, setSuccess] = useState(false);
-  const [current_attempt, setCurrentAttempt] = useState('');
+  const [attempt, setAttempt] = useState('');
   const [keyboard_colors, setKeyboardColors] = useState(Array(26).fill("square-unattempted"));
-  const [message, setMessage] = useState('');
+  const [status, setStatus] = useState('');
   const [attempts, setAttempts] = useState([]);
-  const letters: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split("");
+  const letters: string[] = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split("");
 
   function addLetter(letter: string) {
-    if (current_attempt.length == current_word.length){
+    if (attempt.length == term.word.length){
       return
     }
-    setCurrentAttempt(current_attempt + letter);
+    setAttempt(attempt + letter);
   }
 
   function removeLetter() {
-    if (current_attempt.length == 0 || success)
+    if (attempt.length == 0 || success)
       return
     setSuccess(false);
-    setCurrentAttempt(current_attempt.substring(0, current_attempt.length-1))
+    setAttempt(attempt.substring(0, attempt.length-1))
   }
 
   function checkAttempt() {
-    if (current_attempt.length < current_word.length) {
-      setMessage("Too short");
-      setTimeout(() => { setMessage(""); }, 3000);
-
-      return
-    }
-
-    if ( !is_valid(current_attempt.toLowerCase()) ) {
-      setMessage("Not in word list");
-      setTimeout(() => { setMessage(""); }, 3000);
+    if (attempt.length < term.word.length) {
+      setStatusWithTimeout("Too short");
       return;
     }
 
-    if (current_attempt != current_word) {
-      setMessage("Incorrect");
-    
-      setTimeout(() => { 
-        setMessage("");
-      }, 3000);
+    if (!is_valid(attempt.toLowerCase()) ) {
+      setStatusWithTimeout("Not in word list");
+      return;
+    }
 
+    if (attempt.toLowerCase() != term.word) {
+      setStatusWithTimeout("Incorrect");
+    
       setAttempts([
         ...attempts,
-        current_attempt
+        attempt
       ]);
 
-      for(let i = 0; i <= current_attempt.length; i++) {
-        const pos = current_attempt.charCodeAt(i) - "A".charCodeAt(0);
-        if (! current_word.includes(current_attempt[i])) {
+      for(let i = 0; i <= attempt.length; i++) {
+        const pos = (attempt.toUpperCase()).charCodeAt(i) - "A".charCodeAt(0);
+        if (! (term.word.toUpperCase()).includes(attempt[i])) {
           keyboard_colors[pos] = "square-attempted-not-present";
-          setKeyboardColors(keyboard_colors)
         }
         else {
           keyboard_colors[pos] = "square-attempted-present"
-          setKeyboardColors(keyboard_colors)
         }
       }
+      setKeyboardColors(keyboard_colors)
     }
 
-    if (current_attempt == current_word) {
-      if (!success)
-        setScore(score + 10);
+    if (attempt.toLowerCase() == term.word) {
+      if (!success) setScore(score + 100);
       setSuccess(true);
-      setMessage("Correct!");
-      setTimeout(() => { setMessage(""); }, 3000);
+      setStatusWithTimeout("Correct!");
     }
+  }
+
+  function setStatusWithTimeout(status) {
+    setStatus(status);
+    setTimeout(() => { setStatus(""); }, 3000);
+  }
+
+  function cleanStatus() {
+    return setStatus("");
   }
 
   function restart() {
     setSuccess(false);
-    setMessage("");
-    setTimeout(() => { setMessage(""); }, 3000);
-    const new_word = pick_random_word(5).toUpperCase();
-    setCurrentWord(new_word);
-    setCurrentDefinition(get_definition(new_word.toLowerCase()));
-    setCurrentAttempt("");
+    cleanStatus();
+    setTerm(get_random_term(5));
+    setAttempt("");
     setKeyboardColors(Array(26).fill("square-unattempted"));
   }
 
-  console.log(current_word);
+  console.log(term.word);
 
   const handler = ({ key }) => {
     console.log("Key Pressed: " + String(key));
-    if (current_attempt.length < current_word.length && (letters.includes(key) || letters.includes(key.toUpperCase()))) {
-      setCurrentAttempt(current_attempt + key.toUpperCase())
+    if (attempt.length < term.word.length && (letters.includes(key) || letters.includes(key.toUpperCase()))) {
+      setAttempt(attempt + key.toUpperCase())
     }
     else if (key == "Backspace" && !success) {
-      if (current_attempt.length > 0)
-        setCurrentAttempt(current_attempt.substring(0, current_attempt.length - 1))
+      if (attempt.length > 0)
+        setAttempt(attempt.substring(0, attempt.length - 1))
     }
     else if (key == "Enter") {
       checkAttempt();
@@ -169,37 +181,30 @@ function App() {
       restart();
     }
   };
+
   useEventListener("keydown", handler);
 
   return (
     <>
       <div>
         <Credits />
-
         <Logo />
-        <Definition word={current_word} definition={current_definition} /> 
-
-        <div id="word-container">
-          <Word current_attempt={ current_attempt } current_word={ current_word } success = { success } />
-          <div id="status">{message}</div>
-        </ div>
-
-        <div id="score">
-          <p>score: {score}</p>
-        </div>
+        <Definition term={ term } />
+        <WordContainer attempt={ attempt } success={ success } status={ status } />
+        <Score score={ score } />
 
         <div id="controls">
           <div id="keyboard-container">
             {
               letters.map((name, index) => 
-                <Square key={letters[index]} colors={keyboard_colors} letter={letters[index]} onSquareClick={() => addLetter(letters[index])} />
+                <Square key={ letters[index] } colors={ keyboard_colors } letter={ letters[index] } onSquareClick={ () => addLetter(letters[index]) } />
               )
             }
           </div>
 
-          <button key="check" onClick={checkAttempt} >check</ button>
-          <button key="pick" onClick={restart}>pick another word</ button>
-          <button key="delete" onClick={removeLetter}>delete</ button>
+          <button key="check" onClick={ checkAttempt } >check</ button>
+          <button key="pick" onClick={ restart }>pick another word</ button>
+          <button key="delete" onClick={ removeLetter }>delete</ button>
         </div>
       </div>
     </>
