@@ -15,18 +15,21 @@ function Square( { letter, colors, onSquareClick } ) {
 function Word( { attempt, success } ) {
   let color = "";
   let success_animation = "";
+  const letters: number[] = [0, 1, 2, 3, 4];
+
   if (success) {
     color = "square-attempted-present"; 
     success_animation = "animate__animated animate__flip";
   }
+
   return <>
-    <button key="0" className={`square word ${color} ${success_animation}`}>{attempt.length > 0 ? attempt[0]: ''}</button>
-    <button key="1" className={`square word ${color} ${success_animation}`}>{attempt.length > 1 ? attempt[1]: ''}</button>
-    <button key="2" className={`square word ${color} ${success_animation}`}>{attempt.length > 2 ? attempt[2]: ''}</button>
-    <button key="3" className={`square word ${color} ${success_animation}`}>{attempt.length > 3 ? attempt[3]: ''}</button>
-    <button key="4" className={`square word ${color} ${success_animation}`}>{attempt.length > 4 ? attempt[4]: ''}</button>
-  </>
-}
+      {
+        letters.map((name, index) =>
+          <button key={index} className={`square word ${color} ${success_animation}`}>{attempt.length > index ? attempt[index]: ''}</button>
+        )
+      }
+    </>
+  }
 
 function Logo() {
   return <>
@@ -52,7 +55,7 @@ function Score( { score } ) {
   </>
 }
 
-function Definition( { term, definition }) {
+function Definition( { term }) {
   return <>
     <div id="definition" key={ term.word } className="animate__animated animate__fadeInDown">
       <p >{ term.definition }</p>

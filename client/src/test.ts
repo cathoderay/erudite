@@ -18,11 +18,6 @@ Deno.test("get words with length 5", () => {
     assertEquals(get_words(5).length, 5084);
 });
 
-Deno.test("get attempted letters", () => {
-    const attempted_words: string[] = ["game", "word"];
-    assertEquals(get_attempted_letters(attempted_words), new Set<String>(["g", "a", "m", "e", "w", "o", "r", "d"]))
-});
-
 Deno.test("get definition", () => {
      const word : string = pick_random_word(5);
      console.log(word);

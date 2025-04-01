@@ -30,18 +30,6 @@ export function get_words(length : number) : string[] {
     return result;
 }
 
-export function get_attempted_letters(words: string[]) : Set<String> {
-    let result: Set<string> = new Set<string>();
-
-    for(let i = 0; i < words.length; i++) {
-        for(let j = 0; j < words[i].length; j++) {
-            result.add(words[i][j]);
-        }
-    }
-
-    return result
-}
-
 export function get_definition(word: string) : string {
     let dict: Dictionary = dictionary;
     let def = dict[word as keyof Dictionary]
