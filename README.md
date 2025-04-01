@@ -1,6 +1,6 @@
 Erudite
 =======
-A simple word game (inspired by daily [NYT games](https://www.nytco.com/products/games/), specially [Wordle](https://www.nytimes.com/games/wordle/index.html)).
+This is a simple word game, inspired by daily [NYT games](https://www.nytco.com/products/games/), specially [Wordle](https://www.nytimes.com/games/wordle/index.html).
 
 I'm developing this game for some reasons: 
 1. improve my vocabulary;
