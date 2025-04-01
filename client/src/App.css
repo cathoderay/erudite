@@ -167,7 +167,7 @@ h1 {
 }
 
 .square-attempted-present {
-  background-color: #9ACD32 !important;
+  background-color: light-dark(#9ACD32, #088F8F) !important;
 }
 
 .word {
