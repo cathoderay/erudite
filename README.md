@@ -17,7 +17,8 @@ Desktop version allows you to:
 1. simply type the word with your keyboard;
 2. delete a letter by pressing `Backspace`;
 3. check if word is correct by pressing `Enter`;
-4. pick another word/definition by pressing `Esc`.
+4. reveal solution when you don't know the answer by pressing `Shift`;
+5. pick another word/definition by pressing `Esc`.
 
 Demo
 ----------

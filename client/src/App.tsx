@@ -12,7 +12,7 @@ function Square( { letter, colors, onSquareClick } ) {
   return <button key={letter} className={`square ${color}`} onClick={onSquareClick}>{letter}</ button>;
 }
 
-function Word( { attempt, success } ) {
+function Word( { attempt, success, revealed } ) {
   let color = "";
   let success_animation = "";
   const letters: number[] = [0, 1, 2, 3, 4];
@@ -22,14 +22,18 @@ function Word( { attempt, success } ) {
     success_animation = "animate__animated animate__flip";
   }
 
-  return <>
-      {
-        letters.map((name, index) =>
-          <button key={index} className={`square word ${color} ${success_animation}`}>{attempt.length > index ? attempt[index]: ''}</button>
-        )
-      }
-    </>
+  if (revealed) {
+    color = "square-attempted-revealed";
   }
+
+  return <>
+    {
+      letters.map((name, index) =>
+        <button key={index} className={`square word ${color} ${success_animation}`}>{attempt.length > index ? attempt[index]: ''}</button>
+      )
+    }
+  </>
+}
 
 function Logo() {
   return <>
@@ -63,10 +67,10 @@ function Definition( { term }) {
   </>
 }
 
-function WordContainer({ attempt, success, status }) {
+function WordContainer({ attempt, success, status, revealed }) {
   return <>
     <div id="word-container">
-      <Word attempt={ attempt } success={ success } />
+      <Word attempt={ attempt } success={ success } revealed={ revealed } />
       <div id="status">{ status }</div>
     </ div>
   </>
@@ -92,6 +96,7 @@ function App() {
   const [score, setScore] = useState(0);
   const [success, setSuccess] = useState(false);
   const [attempt, setAttempt] = useState('');
+  const [revealed, setRevealed] = useState(false);
   const [keyboard_colors, setKeyboardColors] = useState(Array(26).fill("square-unattempted"));
   const [status, setStatus] = useState('');
   const [attempts, setAttempts] = useState([]);
@@ -112,6 +117,11 @@ function App() {
   }
 
   function checkAttempt() {
+    if (revealed) {
+      setStatusWithTimeout("Word was revealed");
+      return;
+    }
+
     if (attempt.length < term.word.length) {
       setStatusWithTimeout("Too short");
       return;
@@ -124,6 +134,7 @@ function App() {
 
     if (attempt.toLowerCase() != term.word) {
       setStatusWithTimeout("Incorrect");
+      setScore(score - 10);
     
       setAttempts([
         ...attempts,
@@ -147,6 +158,13 @@ function App() {
       setSuccess(true);
       setStatusWithTimeout("Correct!");
     }
+
+ }
+
+  function reveal() {
+    setAttempt(term.word.toUpperCase());
+    setScore(score - 20);
+    setRevealed(true);
   }
 
   function setStatusWithTimeout(status) {
@@ -158,8 +176,12 @@ function App() {
     return setStatus("");
   }
 
-  function restart() {
+  function next() {
+    if (!success && !revealed) {
+      setScore(score - 10);
+    }
     setSuccess(false);
+    setRevealed(false);
     cleanStatus();
     setTerm(get_random_term(5));
     setAttempt("");
@@ -181,7 +203,10 @@ function App() {
       checkAttempt();
     }
     else if (key == "Escape") {
-      restart();
+      next();
+    }
+    else if (key == "Shift") {
+      reveal();
     }
   };
 
@@ -193,7 +218,7 @@ function App() {
         <Credits />
         <Logo />
         <Definition term={ term } />
-        <WordContainer attempt={ attempt } success={ success } status={ status } />
+        <WordContainer attempt={ attempt } success={ success } status={ status } revealed={ revealed } />
         <Score score={ score } />
 
         <div id="controls">
@@ -205,9 +230,10 @@ function App() {
             }
           </div>
 
-          <button key="check" onClick={ checkAttempt } >check</ button>
-          <button key="pick" onClick={ restart }>pick another word</ button>
-          <button key="delete" onClick={ removeLetter }>delete</ button>
+          <button key="check" onClick={ checkAttempt }>check</button>
+          <button key="pick" onClick={ next }>new word</button>
+          {/* <button key="reveal" onClick={ reveal }>reveal</button> */}
+          <button key="delete" onClick={ removeLetter }>delete</button>
         </div>
       </div>
     </>

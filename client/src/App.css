@@ -162,6 +162,10 @@ h1 {
   background-color: light-dark(#ddd, #666);
 }
 
+.square-attempted-revealed {
+  background-color: light-dark(#F88379, #E35335) !important;
+}
+
 .square-attempted-not-present {
   background-color: light-dark(#777, #333);
 }
