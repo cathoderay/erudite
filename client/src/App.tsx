@@ -162,6 +162,8 @@ function App() {
  }
 
   function reveal() {
+    if (revealed)
+      return;
     setAttempt(term.word.toUpperCase());
     setScore(score - 20);
     setRevealed(true);
