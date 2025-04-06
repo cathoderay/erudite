@@ -194,7 +194,3 @@ p {
   border: 0.2em solid light-dark(#7cab1d,#026f6f) !important;
   box-shadow: 0.2em 0.2em light-dark(#7cab1d, #026f6f) !important;
 }
-
-.word {
-  background-color: light-dark(#ccc, #666);
-}
