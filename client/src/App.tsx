@@ -15,7 +15,7 @@ function MyConfetti( { confetti } ) {
     </>
 
   return <>
-    <Confetti key={ confetti } width={ width } height={ height } gravity="0.4" numberOfPieces="100" />
+    <Confetti key={ confetti } width={ width } height={ height } gravity="0.5" numberOfPieces="300" />
   </>
 }
 
@@ -50,7 +50,7 @@ function Word( { attempt, success, revealed } ) {
 }
 
 function Logo( { success } ) {
-  const animation = success ? "animate__animated animate__shakeY" : "animate__animated animate__fadeIn";
+  const animation = success ? "animate__animated animate__shakeY" : "animate__animated animate__tada";
 
   return <>
     <div id="logo">
@@ -185,7 +185,7 @@ function App() {
       if (!success) setScore(score + 100);
 
       setConfetti(true);
-      setTimeout(() => { setConfetti(false); }, 5000);
+      setTimeout(() => { setConfetti(false); }, 4000);
       setSuccess(true);
     }
  }
