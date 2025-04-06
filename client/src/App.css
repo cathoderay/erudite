@@ -68,11 +68,6 @@ p {
   padding: 0;
 }
 
-#keyboard-container {
-  padding-left: 1em;
-  padding-right: 1em;
-}
-
 #status {
   height: 2vh;
   font-weight: bolder;
