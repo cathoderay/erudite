@@ -129,6 +129,7 @@ function App() {
     if (attempt.length == term.word.length){
       return
     }
+    setStatus("");
     setAttempt(attempt + letter);
   }
 
@@ -136,6 +137,7 @@ function App() {
     if (attempt.length == 0 || success || revealed)
       return;
     setSuccess(false);
+    setStatus("");
     setAttempt(attempt.substring(0, attempt.length-1))
   }
 
@@ -162,7 +164,6 @@ function App() {
 
     if (attempt.toLowerCase() != term.word) {
       setStatusWithTimeout("incorrect");
-      // setScore(score - 10);
     
       setAttempts([
         ...attempts,
@@ -187,15 +188,14 @@ function App() {
       setConfetti(true);
       setTimeout(() => { setConfetti(false); }, 5000);
       setSuccess(true);
-      // setStatusWithTimeout("correct!");
     }
  }
 
   function reveal() {
     if (revealed || success)
       return;
+    setStatus("");
     setAttempt(term.word.toUpperCase());
-    // setScore(score - 20);
     setRevealed(true);
   }
 
@@ -210,7 +210,6 @@ function App() {
 
   function next() {
     if (!success && !revealed) {
-      // setScore(score - 10);
     }
     setSuccess(false);
     setRevealed(false);
