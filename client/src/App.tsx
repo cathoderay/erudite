@@ -129,7 +129,7 @@ function App() {
     if (attempt.length == term.word.length){
       return
     }
-    setStatus("");
+    cleanStatus();
     setAttempt(attempt + letter);
   }
 
@@ -137,7 +137,7 @@ function App() {
     if (attempt.length == 0 || success || revealed)
       return;
     setSuccess(false);
-    setStatus("");
+    cleanStatus();
     setAttempt(attempt.substring(0, attempt.length-1))
   }
 
@@ -194,14 +194,14 @@ function App() {
   function reveal() {
     if (revealed || success)
       return;
-    setStatus("");
+    cleanStatus();
     setAttempt(term.word.toUpperCase());
     setRevealed(true);
   }
 
   function setStatusWithTimeout(status) {
     setStatus(status);
-    setTimeout(() => { setStatus(""); }, 3000);
+    setTimeout(() => { cleanStatus(); }, 3000);
   }
 
   function cleanStatus() {
