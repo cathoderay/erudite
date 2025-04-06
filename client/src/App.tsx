@@ -139,6 +139,11 @@ function App() {
       return;
     }
 
+    if (attempts.includes(attempt)){
+      setStatusWithTimeout("already tried");
+      return;
+    }
+
     if (attempt.toLowerCase() != term.word) {
       setStatusWithTimeout("incorrect");
       setScore(score - 10);
@@ -193,6 +198,7 @@ function App() {
     cleanStatus();
     setTerm(get_random_term(5));
     setAttempt("");
+    setAttempts([]);
     setKeyboardColors(Array(26).fill("square-unattempted"));
   }
 
