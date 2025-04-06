@@ -2,20 +2,25 @@
   max-width: 700px;
   text-align: center;
   margin: 0 auto;
-
+  padding: 0 1em 1em 1em;
 }
 
 #logo {
+  font-size: 1.2em;
+  padding-top: 4vh;
   letter-spacing: -0.1em;
-  font-size: 2vh;
   color: light-dark(#333, #ddd);
+}
+
+#logo img {
+  width: 10%;
 }
 
 button {
   font-weight: bold;
   color: light-dark(#000, #fff);
   background-color: light-dark(#ddd, #666);
-  margin: 10px;
+  margin: 0.5em;
 }
 
 .word {
@@ -27,35 +32,50 @@ button {
 }
 
 #word-container {
-  height: 12vh;
+  height: 6.5em;
+  margin-top: 0.5em;
+  margin-bottom: 1.5em;
+  padding: 0;
+  display:grid;
+  flex-direction: row;
+  align-items: center;
 }
 
 h1 {
   margin: 0;
+  font-size: 3em;
+}
+
+p {
+  margin: 0;
 }
 
 #word-container .square {
-  font-size: 35px;
+  font-size: 2em;
   font-weight: bolder;
-  max-width: 70px;
-  max-height: 90px;
-  width: 13vw;
-  height: 16vw;
+  width: 2em;
+  height: 2.5em;
   padding: 0;
+  background-color: light-dark(#d6f8ff, #3b494d);
+  box-shadow: 0.2em 0.2em light-dark(lightblue, #20292b);
 }
 
 .square {
-  font-size: 20px;
-  font-weight: bolder;
-  max-width: 60px;
-  max-height: 70px;
-  width: 8vw;
-  height: 11vw;
-  margin: 2px;
+  font-size: 1.2em;
+  font-weight: 900;
+  width: 1.8em;
+  height: 3em;
+  margin: 0.3em;
+  padding: 0;
+}
+
+#keyboard-container {
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
 #status {
-  margin-top: 0;
+  margin-top: 1em;
   padding-top: 0;
   color: #666;
   font-family: verdana;
@@ -64,41 +84,41 @@ h1 {
 
 #credits {
   position:absolute;
+  font-size: 0.1em;
   border-bottom: 1px solid light-dark(#ccc, #333);
   left: 0;
   right: 0;
   top:0;
-  background-color: light-dark(#eee, #333);
-  font-size: 10px;
+  color: light-dark(#555, #444);
+  background-color: light-dark(#eee, #222);
 }
 
 #definition {
-  height: 20vh;
+  height: 7em;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-weight: 600;
-  font-size: 24px;
-  padding-left: 5%;
-  padding-right: 5%;
-  border-radius: 20px;
+  font-size: 1.4em;
+  padding-left: 2em;
+  padding-right: 2em;
+  border-radius: 0.5em;
   display:grid;
   margin-top: 0;
   flex-direction: row;
   align-items: center;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-top: 3vh;
-  margin-bottom: 3vh;
-  background-color: light-dark(#eee, #333);
-
-  --animate-duration: 500ms;
-  --animate-delay: 0.5s;
+  margin-left: 1em;
+  margin-right: 1em;
+  margin-top: 2.5em;
+  background-color: light-dark(#d6f8ff, #3b494d);
+  border-color: light-dark(lightblue, #5e6e73);
+  border-style: dotted;
+  border-width: 0.3em;
 }
 
 
 #score {
-  height: 25px;
+  padding: 0;
   color: #888; 
-  font-size: 20px;
+  font-size: 1.2em;
 }
 
 
@@ -115,7 +135,7 @@ h1 {
     display:grid;
     flex-direction: row;
     align-items: center;
-    font-size: 16px;
+    font-size: 0.8em;
     padding-left: 2em;
     padding-right: 2em;
   }
@@ -127,51 +147,49 @@ h1 {
   }
 
   #word-container .square {
-    font-size: 28px;
-    width: 13vw;
+    font-size: 1.6em;
+    width: 1.6em;
+    height: 2.5em;
     padding: 0;
-    margin-left: 5px;
   }
 
   .square {
-    font-size: 14px;
-    width: 8vw;
-    height: 11vw;
-    margin: 2px;
-    padding: 1vw;
+    font-size: 1em;
+    font-weight: 900;
+    width: 1.5em;
+    height: 2em;
+    margin: 0.2em;
   }
 
   #score {
-    height: 25px;
     color: #888; 
     font-size: 15px; 
     height: 5vh;
   }
 
-  #keyboard-container {
-    padding-left: 1em;
-    padding-right: 1em;
-  }
-
   button {
-    font-size: 12px;
+    font-size: 0.7em;
   }
 }
 
 .square-unattempted {
   background-color: light-dark(#ddd, #666);
+  box-shadow: 0.2em 0.2em light-dark(#bbb, #444) !important;
 }
 
 .square-attempted-revealed {
-  background-color: light-dark(#F88379, #E35335) !important;
+  background-color: light-dark(#ffae40, #E35335) !important;
+  box-shadow: 0.2em 0.2em light-dark(#e99727, #94220a) !important;
 }
 
 .square-attempted-not-present {
   background-color: light-dark(#777, #333);
+  box-shadow: 0.2em 0.2em light-dark(#555, #111) !important;
 }
 
 .square-attempted-present {
-  background-color: light-dark(#9ACD32, #088F8F) !important;
+  background-color: light-dark(#a1d43b, #088F8F) !important;
+  box-shadow: 0.2em 0.2em light-dark(#7cab1d, #026f6f) !important;
 }
 
 .word {

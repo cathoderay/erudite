@@ -27,18 +27,20 @@ function Word( { attempt, success, revealed } ) {
   }
 
   return <>
+    <div>
     {
       letters.map((name, index) =>
         <button key={index} className={`square word ${color} ${success_animation}`}>{attempt.length > index ? attempt[index]: ''}</button>
       )
     }
+    </div>
   </>
 }
 
 function Logo() {
   return <>
-    <div id="logo" className="animate__animated animate__swing">
-      <h1><img src="./owl.png" width="10%" height="10%"></img> erudite</h1>
+    <div id="logo">
+      <h1><img src="./owl.png" className="animate__animated animate__swing"></img> erudite</h1>
     </div>
   </>
 }
@@ -71,8 +73,13 @@ function WordContainer({ attempt, success, status, revealed }) {
   return <>
     <div id="word-container">
       <Word attempt={ attempt } success={ success } revealed={ revealed } />
-      <div id="status">{ status }</div>
     </ div>
+  </>
+}
+
+function Status( { status } ) {
+  return <>
+    <div id="status">{ status }</div>
   </>
 }
 
@@ -110,30 +117,30 @@ function App() {
   }
 
   function removeLetter() {
-    if (attempt.length == 0 || success)
-      return
+    if (attempt.length == 0 || success || revealed)
+      return;
     setSuccess(false);
     setAttempt(attempt.substring(0, attempt.length-1))
   }
 
   function checkAttempt() {
     if (revealed) {
-      setStatusWithTimeout("Word was revealed");
+      setStatusWithTimeout("word was revealed");
       return;
     }
 
     if (attempt.length < term.word.length) {
-      setStatusWithTimeout("Too short");
+      setStatusWithTimeout("too short");
       return;
     }
 
     if (!is_valid(attempt.toLowerCase()) ) {
-      setStatusWithTimeout("Not in word list");
+      setStatusWithTimeout("not in word list");
       return;
     }
 
     if (attempt.toLowerCase() != term.word) {
-      setStatusWithTimeout("Incorrect");
+      setStatusWithTimeout("incorrect");
       setScore(score - 10);
     
       setAttempts([
@@ -156,13 +163,12 @@ function App() {
     if (attempt.toLowerCase() == term.word) {
       if (!success) setScore(score + 100);
       setSuccess(true);
-      setStatusWithTimeout("Correct!");
+      setStatusWithTimeout("correct!");
     }
-
  }
 
   function reveal() {
-    if (revealed)
+    if (revealed || success)
       return;
     setAttempt(term.word.toUpperCase());
     setScore(score - 20);
@@ -194,12 +200,12 @@ function App() {
 
   const handler = ({ key }) => {
     console.log("Key Pressed: " + String(key));
+
     if (attempt.length < term.word.length && (letters.includes(key) || letters.includes(key.toUpperCase()))) {
-      setAttempt(attempt + key.toUpperCase())
+      addLetter(key.toUpperCase());
     }
-    else if (key == "Backspace" && !success) {
-      if (attempt.length > 0)
-        setAttempt(attempt.substring(0, attempt.length - 1))
+    else if (key == "Backspace") {
+      removeLetter();
     }
     else if (key == "Enter") {
       checkAttempt();
@@ -220,6 +226,7 @@ function App() {
         <Credits />
         <Logo />
         <Definition term={ term } />
+        <Status status={ status } />
         <WordContainer attempt={ attempt } success={ success } status={ status } revealed={ revealed } />
         <Score score={ score } />
 
@@ -232,10 +239,12 @@ function App() {
             }
           </div>
 
-          <button key="check" onClick={ checkAttempt }>check</button>
-          <button key="pick" onClick={ next }>new word</button>
-          {/* <button key="reveal" onClick={ reveal }>reveal</button> */}
-          <button key="delete" onClick={ removeLetter }>delete</button>
+          <div id="actions">
+            <button key="check" onClick={ checkAttempt }>check</button>
+            <button key="pick" onClick={ next }>next</button>
+            <button key="reveal" onClick={ reveal }>reveal</button>
+            <button key="delete" onClick={ removeLetter }>delete</button>
+          </div>
         </div>
       </div>
     </>

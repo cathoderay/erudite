@@ -2,19 +2,13 @@
   font-family: "M PLUS Rounded 1c";
   line-height: 1.5;
   font-weight: bolder;
-
   color-scheme: light dark;
   color: light-dark(#444, #ddd);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  --animate-duration: 100ms;
-  --animate-delay: 0.1s;
-
 }
 
 a {
@@ -29,10 +23,8 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  margin-top: 10vh;
+  margin-top: 2vh;
   min-width: 320px;
-  min-height: 100vh;
 }
 
 h1 {
@@ -65,7 +57,7 @@ button:focus-visible {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background-color: light-dark(#fff, #222);
   }
   a:hover {
     color: #747bff;
