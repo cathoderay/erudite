@@ -1,10 +1,25 @@
 import { useState, useRef, useEffect } from "react";
+import { useWindowSize } from "npm:react-use";
+import Confetti from "npm:react-confetti";
 
 import "./App.css";
 import { is_valid } from "./main.ts";
 import { get_random_term } from "./main.ts";
 
 import "animate.css";
+
+
+function MyConfetti( { confetti } ) {
+  const { width, height } = useWindowSize();
+  if (!confetti)
+    return <>
+    </>
+
+  return <>
+    <Confetti key={ confetti } width={ width } height={ height } gravity="0.4" numberOfPieces="100" />
+  </>
+}
+
 
 
 function Square( { letter, colors, onSquareClick } ) {
@@ -107,6 +122,7 @@ function App() {
   const [keyboard_colors, setKeyboardColors] = useState(Array(26).fill("square-unattempted"));
   const [status, setStatus] = useState('');
   const [attempts, setAttempts] = useState([]);
+  const [confetti, setConfetti] = useState(false);
   const letters: string[] = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split("");
 
   function addLetter(letter: string) {
@@ -167,6 +183,9 @@ function App() {
 
     if (attempt.toLowerCase() == term.word) {
       if (!success) setScore(score + 100);
+
+      setConfetti(true);
+      setTimeout(() => { setConfetti(false); }, 5000);
       setSuccess(true);
       setStatusWithTimeout("correct!");
     }
@@ -199,6 +218,7 @@ function App() {
     setTerm(get_random_term(5));
     setAttempt("");
     setAttempts([]);
+    setConfetti(false);
     setKeyboardColors(Array(26).fill("square-unattempted"));
   }
 
@@ -229,6 +249,7 @@ function App() {
   return (
     <>
       <div>
+        <MyConfetti confetti={ confetti } />
         <Credits />
         <Logo />
         <Definition term={ term } />

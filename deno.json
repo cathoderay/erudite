@@ -13,8 +13,10 @@
     "@vitejs/plugin-react": "npm:@vitejs/plugin-react@^4.3.3",
     "animate.css": "npm:animate.css@^4.1.1",
     "react": "npm:react@^18.3.1",
+    "react-confetti": "npm:react-confetti@^6.4.0",
     "react-dom": "npm:react-dom@^18.3.1",
     "react-router-dom": "npm:react-router-dom@^6.28.0",
+    "react-use": "npm:react-use@^17.6.0",
     "vite": "npm:vite@^5.4.11"
   },
   "compilerOptions": {
