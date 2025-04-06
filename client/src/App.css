@@ -70,7 +70,6 @@ p {
 
 #status {
   height: 2vh;
-  font-weight: bolder;
   margin-top: 1em;
   padding-top: 0;
   color: light-dark(#444, #ddd);
