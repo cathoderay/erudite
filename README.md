@@ -11,9 +11,9 @@ How it works
 ------------
 You have to figure out what is the word based on the definition presented.
 
-If you make an incorrect guess, any correct letter will be highlighted in green in the keyboard.
+If you make an incorrect guess, any correct letter will be highlighted in green in the UI.
 
-Desktop version allows you to:
+Desktop version allows you to use keyboard shortcuts for all actions:
 1. simply type the word with your keyboard;
 2. delete a letter by pressing `Backspace`;
 3. check if word is correct by pressing `Enter`;
