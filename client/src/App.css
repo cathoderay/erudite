@@ -9,7 +9,7 @@
   font-family: "Passero One";
   font-weight: bolder;
   font-size: 1.8em;
-  padding-top: 4vh;
+  padding-top: 20px;
   color: light-dark(#333, #ddd);
 }
 
@@ -159,7 +159,6 @@ p {
   #score {
     color: #888; 
     font-size: 0.8em; 
-    height: 5vh;
   }
 
   button {

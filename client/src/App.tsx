@@ -8,7 +8,6 @@ import { get_random_term } from "./main.ts";
 
 import "animate.css";
 
-
 function MyConfetti( { confetti } ) {
   const { width, height } = useWindowSize();
   if (!confetti)
@@ -19,8 +18,6 @@ function MyConfetti( { confetti } ) {
     <Confetti key={ confetti } width={ width } height={ height } gravity="0.4" numberOfPieces="100" />
   </>
 }
-
-
 
 function Square( { letter, colors, onSquareClick } ) {
   let color = letter.length > 0 && colors != null ? colors[letter.charCodeAt(0) - "A".charCodeAt(0)] : "";
@@ -52,10 +49,12 @@ function Word( { attempt, success, revealed } ) {
   </>
 }
 
-function Logo() {
+function Logo( { success } ) {
+  const animation = success ? "animate__animated animate__shakeY" : "animate__animated animate__fadeIn";
+
   return <>
     <div id="logo">
-      <h1><img src="./owl.png" className="animate__animated animate__swing"></img> erudite</h1>
+      <h1><img src="./owl.png" key={ success.toString() } className={ animation }></img> erudite</h1>
     </div>
   </>
 }
@@ -250,7 +249,7 @@ function App() {
       <div>
         <MyConfetti confetti={ confetti } />
         <Credits />
-        <Logo />
+        <Logo success={ success } />
         <Definition term={ term } />
         <Status status={ status } />
         <WordContainer attempt={ attempt } success={ success } status={ status } revealed={ revealed } />
