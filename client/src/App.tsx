@@ -35,7 +35,7 @@ function Square( { letter, colors, onSquareClick } ) {
   return <button key={letter} className={`square ${color}`} onClick={onSquareClick}>{letter}</ button>;
 }
 
-function Letters( { attempt, success, revealed } ) {
+function Word( { attempt, success, revealed } ) {
   let color = "";
   let success_animation = "";
   const indices: number[] = [0, 1, 2, 3, 4];
@@ -50,12 +50,14 @@ function Letters( { attempt, success, revealed } ) {
   }
 
   return <>
-    <div>
-    {
-      indices.map((name, index) =>
-        <button key={index} className={`square word ${color} ${success_animation}`}>{attempt.length > index ? attempt[index]: ''}</button>
-      )
-    }
+    <div id="word-container">
+      <div>
+        {
+          indices.map((name, index) =>
+            <button key={index} className={`square word ${color} ${success_animation}`}>{attempt.length > index ? attempt[index]: ''}</button>
+          )
+        }
+    </div>
     </div>
   </>
 }
@@ -91,14 +93,6 @@ function Definition( { term }) {
     <div id="definition" key={ term.word } className="animate__animated animate__fadeInDown">
       <p >{ term.definition }</p>
     </div>
-  </>
-}
-
-function Word({ attempt, success, revealed }) {
-  return <>
-    <div id="word-container">
-      <Letters attempt={ attempt } success={ success } revealed={ revealed } />
-    </ div>
   </>
 }
 
