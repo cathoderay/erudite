@@ -117,6 +117,16 @@ function KeyboardRow( { start, finish, keyboard_colors, add_letter }) {
   </>
 }
 
+function Keyboard( { keyboard_colors, add_letter }) {
+  return <>
+    <div id="keyboard-container">
+      <KeyboardRow start="0" finish="10" keyboard_colors={ keyboard_colors } add_letter={ add_letter } />
+      <KeyboardRow start="10" finish="19" keyboard_colors={ keyboard_colors } add_letter={ add_letter } />
+      <KeyboardRow start="19" finish="26" keyboard_colors={ keyboard_colors } add_letter={ add_letter } />
+    </div>
+  </>
+}
+
 const useEventListener = (eventName, handler, element = window) => {
   const savedHandler = useRef();
   useEffect(() => {
@@ -275,12 +285,7 @@ function App() {
         <Score score={ score } />
 
         <div id="controls">
-          <div id="keyboard-container">
-            {/* TODO: Create a Keyboard component, so we don't have to worry about start/finish values at this level */}
-            <KeyboardRow start="0" finish="10" keyboard_colors={ keyboard_colors } add_letter={ addLetter } />
-            <KeyboardRow start="10" finish="19" keyboard_colors={ keyboard_colors } add_letter={ addLetter } />
-            <KeyboardRow start="19" finish="26" keyboard_colors={ keyboard_colors } add_letter={ addLetter } />
-          </div>
+          <Keyboard keyboard_colors={ keyboard_colors } add_letter={ addLetter } />
 
           <div id="actions">
             <button key="check" onClick={ checkAttempt }>check</button>
