@@ -35,7 +35,7 @@ function Square( { letter, colors, onSquareClick } ) {
   return <button key={letter} className={`square ${color}`} onClick={onSquareClick}>{letter}</ button>;
 }
 
-function Word( { attempt, success, revealed } ) {
+function Letters( { attempt, success, revealed } ) {
   let color = "";
   let success_animation = "";
   const indices: number[] = [0, 1, 2, 3, 4];
@@ -94,10 +94,10 @@ function Definition( { term }) {
   </>
 }
 
-function WordContainer({ attempt, success, status, revealed }) {
+function Word({ attempt, success, revealed }) {
   return <>
     <div id="word-container">
-      <Word attempt={ attempt } success={ success } revealed={ revealed } />
+      <Letters attempt={ attempt } success={ success } revealed={ revealed } />
     </ div>
   </>
 }
@@ -287,7 +287,7 @@ function App() {
         <Logo success={ success } />
         <Definition term={ term } />
         <Status status={ status } />
-        <WordContainer attempt={ attempt } success={ success } status={ status } revealed={ revealed } />
+        <Word attempt={ attempt } success={ success } revealed={ revealed } />
         <Score score={ score } />
 
         <div id="controls">
