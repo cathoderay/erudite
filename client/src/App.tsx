@@ -1,3 +1,4 @@
+import React from "react";
 import { useState, useRef, useEffect } from "react";
 import { useWindowSize } from "npm:react-use";
 import Confetti from "npm:react-confetti";
@@ -7,6 +8,7 @@ import { is_valid } from "./main.ts";
 import { get_random_term } from "./main.ts";
 
 import "animate.css";
+
 
 function MyConfetti( { confetti } ) {
   const { width, height } = useWindowSize();
@@ -97,6 +99,22 @@ function Status( { status } ) {
   </>
 }
 
+function KeyboardRow( { start, finish, keyboard_colors, add_letter }) {
+  const letters: string[] = 'QWERTYUIOPASDFGHJKLZXCVBNM'.split(""); // TODO: abstract it to a higher level
+  start = Number(start);
+  finish = Number(finish);
+
+  return <>
+    <div>
+    {
+      letters.slice(start, finish).map((name, index) => {
+        return <Square key={ letters[start + index] } colors={ keyboard_colors } letter={ letters[start + index] } onSquareClick={ () => add_letter(letters[start + index]) } />
+      })
+    }
+    </div>
+  </>
+}
+
 const useEventListener = (eventName, handler, element = window) => {
   const savedHandler = useRef();
   useEffect(() => {
@@ -122,7 +140,7 @@ function App() {
   const [status, setStatus] = useState('');
   const [attempts, setAttempts] = useState([]);
   const [confetti, setConfetti] = useState(false);
-  const letters: string[] = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split("");
+  const letters: string[] = 'QWERTYUIOPASDFGHJKLZXCVBNM'.split("");
 
   function addLetter(letter: string) {
     if (attempt.length == term.word.length){
@@ -257,11 +275,10 @@ function App() {
 
         <div id="controls">
           <div id="keyboard-container">
-            {
-              letters.map((name, index) => 
-                <Square key={ letters[index] } colors={ keyboard_colors } letter={ letters[index] } onSquareClick={ () => addLetter(letters[index]) } />
-              )
-            }
+            {/* TODO: Create a Keyboard component, so we don't have to worry about start/finish values at this level */}
+            <KeyboardRow start="0" finish="10" keyboard_colors={ keyboard_colors } add_letter={ addLetter } />
+            <KeyboardRow start="10" finish="19" keyboard_colors={ keyboard_colors } add_letter={ addLetter } />
+            <KeyboardRow start="19" finish="26" keyboard_colors={ keyboard_colors } add_letter={ addLetter } />
           </div>
 
           <div id="actions">

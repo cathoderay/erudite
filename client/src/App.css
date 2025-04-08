@@ -2,7 +2,6 @@
   max-width: 700px;
   text-align: center;
   margin: 0 auto;
-  padding: 0 1em 1em 1em;
 }
 
 #logo {
@@ -100,7 +99,7 @@ p {
   align-items: center;
   margin-left: 1em;
   margin-right: 1em;
-  margin-top: 2.5em;
+  margin-top: 1.5em;
   background-color: light-dark(#d6f8ff, #3b494d);
   border-color: light-dark(lightblue, #5e6e73);
   box-shadow: 0.4em 0.4em light-dark(lightblue, #20292b);
@@ -117,6 +116,10 @@ p {
 
 #actions {
   margin-top: 1.2em;
+}
+
+#keyboard-container {
+  margin:0;
 }
 
 @media only screen and (max-width: 768px) {
@@ -153,7 +156,6 @@ p {
     font-weight: 900;
     width: 1.5em;
     height: 2em;
-    margin: 0.2em;
   }
 
   #score {
