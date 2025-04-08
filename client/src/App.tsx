@@ -10,6 +10,9 @@ import { get_random_term } from "./main.ts";
 import "animate.css";
 
 
+const keys: string[] = 'QWERTYUIOPASDFGHJKLZXCVBNM'.split("");
+
+
 function MyConfetti( { confetti } ) {
   const { width, height } = useWindowSize();
   if (!confetti)
@@ -29,7 +32,7 @@ function Square( { letter, colors, onSquareClick } ) {
 function Word( { attempt, success, revealed } ) {
   let color = "";
   let success_animation = "";
-  const letters: number[] = [0, 1, 2, 3, 4];
+  const indices: number[] = [0, 1, 2, 3, 4];
 
   if (success) {
     color = "square-attempted-present"; 
@@ -43,7 +46,7 @@ function Word( { attempt, success, revealed } ) {
   return <>
     <div>
     {
-      letters.map((name, index) =>
+      indices.map((name, index) =>
         <button key={index} className={`square word ${color} ${success_animation}`}>{attempt.length > index ? attempt[index]: ''}</button>
       )
     }
@@ -100,15 +103,14 @@ function Status( { status } ) {
 }
 
 function KeyboardRow( { start, finish, keyboard_colors, add_letter }) {
-  const letters: string[] = 'QWERTYUIOPASDFGHJKLZXCVBNM'.split(""); // TODO: abstract it to a higher level
   start = Number(start);
   finish = Number(finish);
 
   return <>
     <div>
     {
-      letters.slice(start, finish).map((name, index) => {
-        return <Square key={ letters[start + index] } colors={ keyboard_colors } letter={ letters[start + index] } onSquareClick={ () => add_letter(letters[start + index]) } />
+      keys.slice(start, finish).map((name, index) => {
+        return <Square key={ keys[start + index] } colors={ keyboard_colors } letter={ keys[start + index] } onSquareClick={ () => add_letter(keys[start + index]) } />
       })
     }
     </div>
@@ -140,7 +142,6 @@ function App() {
   const [status, setStatus] = useState('');
   const [attempts, setAttempts] = useState([]);
   const [confetti, setConfetti] = useState(false);
-  const letters: string[] = 'QWERTYUIOPASDFGHJKLZXCVBNM'.split("");
 
   function addLetter(letter: string) {
     if (attempt.length == term.word.length){
@@ -243,7 +244,7 @@ function App() {
   const handler = ({ key }) => {
     console.log("Key Pressed: " + String(key));
 
-    if (attempt.length < term.word.length && (letters.includes(key) || letters.includes(key.toUpperCase()))) {
+    if (attempt.length < term.word.length && (keys.includes(key) || keys.includes(key.toUpperCase()))) {
       addLetter(key.toUpperCase());
     }
     else if (key == "Backspace") {
