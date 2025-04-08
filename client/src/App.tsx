@@ -19,6 +19,14 @@ enum Shortcuts {
   SHIFT = "SHIFT"
 }
 
+enum StatusMessages {
+  REVEALED = "word was revealed",
+  TOO_SHORT = "too short",
+  NOT_IN_LIST = "not in word list",
+  ALREADY_TRIED = "already tried",
+  INCORRECT = "incorrect"
+}
+
 function MyConfetti( { confetti } ) {
   const { width, height } = useWindowSize();
   if (!confetti)
@@ -171,27 +179,27 @@ function App() {
 
   function checkAttempt() {
     if (revealed) {
-      setStatusWithTimeout("word was revealed");
+      setStatusWithTimeout(StatusMessages.REVEALED);
       return;
     }
 
     if (attempt.length < term.word.length) {
-      setStatusWithTimeout("too short");
+      setStatusWithTimeout(StatusMessages.TOO_SHORT);
       return;
     }
 
     if (!is_valid(attempt.toLowerCase()) ) {
-      setStatusWithTimeout("not in word list");
+      setStatusWithTimeout(StatusMessages.NOT_IN_LIST);
       return;
     }
 
     if (attempts.includes(attempt)){
-      setStatusWithTimeout("already tried");
+      setStatusWithTimeout(StatusMessages.ALREADY_TRIED);
       return;
     }
 
     if (attempt.toLowerCase() != term.word) {
-      setStatusWithTimeout("incorrect");
+      setStatusWithTimeout(StatusMessages.INCORRECT);
     
       setAttempts([
         ...attempts,
