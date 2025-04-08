@@ -12,6 +12,12 @@ import "animate.css";
 
 const keys: string[] = 'QWERTYUIOPASDFGHJKLZXCVBNM'.split("");
 
+enum Shortcuts {
+  BACKSPACE = "BACKSPACE",
+  ENTER = "ENTER",
+  ESCAPE = "ESCAPE",
+  SHIFT = "SHIFT"
+}
 
 function MyConfetti( { confetti } ) {
   const { width, height } = useWindowSize();
@@ -220,8 +226,7 @@ function App() {
  }
 
   function reveal() {
-    if (revealed || success)
-      return;
+    if (revealed || success) return;
     cleanStatus();
     setAttempt(term.word.toUpperCase());
     setRevealed(true);
@@ -237,8 +242,6 @@ function App() {
   }
 
   function next() {
-    if (!success && !revealed) {
-    }
     setSuccess(false);
     setRevealed(false);
     cleanStatus();
@@ -251,27 +254,30 @@ function App() {
 
   console.log(term.word);
 
-  const handler = ({ key }) => {
+  const onKeyDownHandler = ({ key }) => {
+    key = key.toUpperCase();
     console.log("Key Pressed: " + String(key));
 
-    if (attempt.length < term.word.length && (keys.includes(key) || keys.includes(key.toUpperCase()))) {
-      addLetter(key.toUpperCase());
-    }
-    else if (key == "Backspace") {
-      removeLetter();
-    }
-    else if (key == "Enter") {
-      checkAttempt();
-    }
-    else if (key == "Escape") {
-      next();
-    }
-    else if (key == "Shift") {
-      reveal();
+    switch (key) {
+      case Shortcuts.BACKSPACE:
+        removeLetter();
+        break;
+      case Shortcuts.ENTER:
+        checkAttempt();
+        break;
+      case Shortcuts.ESCAPE:
+        next();
+        break;
+      case Shortcuts.SHIFT:
+        reveal();
+        break;
+      default:
+        if (attempt.length < term.word.length && (keys.includes(key)))
+          addLetter(key);
     }
   };
 
-  useEventListener("keydown", handler);
+  useEventListener("keydown", onKeyDownHandler);
 
   return (
     <>
@@ -289,7 +295,7 @@ function App() {
 
           <div id="actions">
             <button key="check" onClick={ checkAttempt }>check</button>
-            <button key="pick" onClick={ next }>next</button>
+            <button key="next" onClick={ next }>next</button>
             <button key="reveal" onClick={ reveal }>reveal</button>
             <button key="delete" onClick={ removeLetter }>delete</button>
           </div>
