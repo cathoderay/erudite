@@ -226,12 +226,11 @@ function App() {
         }
       }
       setKeyboardColors(keyboard_colors)
+      return;
     }
 
-    if (attempt.toLowerCase() == term.word) {
-      if (!success) setScore(score + 100);
-      setSuccess(true);
-    }
+    if (!success) setScore(score + 100);
+    setSuccess(true);
  }
 
   function reveal() {
