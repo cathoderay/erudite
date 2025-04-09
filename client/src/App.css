@@ -55,6 +55,7 @@ p {
   background-color: light-dark(#d6f8ff, #3b494d);
   box-shadow: 0.2em 0.2em light-dark(lightblue, #20292b);
   border: 0.2em solid light-dark(lightblue, #20292b);
+  margin: 0.2em;
 }
 
 .square {
