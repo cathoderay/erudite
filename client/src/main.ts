@@ -34,7 +34,7 @@ export function get_definition(word: string) : string {
     let dict: Dictionary = dictionary;
     let def = dict[word as keyof Dictionary]
     let pos = def.indexOf("\n");
-    const max_characters = 150;
+    const max_characters = 140;
     let result = def.substring(0, pos != - 1 ? Math.min(pos + 1, max_characters) : Math.min(def.length, max_characters));
     if (result.length < def.length)
         result += "...";

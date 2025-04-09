@@ -58,7 +58,7 @@ p {
 }
 
 .square {
-  border-radius: 2px;
+  border-radius: 0.4em;
   font-size: 1.2em;
   font-weight: 900;
   width: 1.8em;
@@ -92,7 +92,7 @@ p {
   font-size: 1.4em;
   padding-left: 2em;
   padding-right: 2em;
-  border-radius: 0.1em;
+  border-radius: 0.4em;
   display:grid;
   margin-top: 0;
   flex-direction: row;
@@ -123,19 +123,15 @@ p {
 }
 
 @media only screen and (max-width: 768px) {
-  #credits {
-    font-size: 10px;
-  }
-
   #logo {
-    font-size: 3vw;
+    font-size: 1em;
   }
 
   #definition {
     display:grid;
     flex-direction: row;
     align-items: center;
-    font-size: 1em;
+    font-size: 0.9em;
     padding-left: 2em;
     padding-right: 2em;
   }
@@ -146,7 +142,7 @@ p {
 
   #word-container .square {
     font-size: 1.6em;
-    width: 1.6em;
+    width: 1.7em;
     height: 2.5em;
     padding: 0;
   }
@@ -174,9 +170,9 @@ p {
 }
 
 .square-attempted-revealed {
-  background-color: light-dark(#ffae40, #E35335) !important;
-  border: 0.2em solid light-dark(#e99727,#94220a) !important;
-  box-shadow: 0.2em 0.2em light-dark(#e99727, #94220a) !important;
+  background-color: light-dark(#ffae40, #f66245) !important;
+  border: 0.2em solid light-dark(#e99727,#cf3a1d) !important;
+  box-shadow: 0.2em 0.2em light-dark(#e99727, #cf3a1d) !important;
 }
 
 .square-attempted-not-present {

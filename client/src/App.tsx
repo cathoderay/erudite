@@ -27,23 +27,23 @@ enum StatusMessages {
   INCORRECT = "incorrect"
 }
 
-function MyConfetti( { confetti } ) {
+function MyConfetti({ success }) {
   const { width, height } = useWindowSize();
-  if (!confetti)
+  if (!success)
     return <>
     </>
 
   return <>
-    <Confetti key={ confetti } width={ width } height={ height } gravity="0.5" numberOfPieces="300" />
+    <Confetti key={ success } width={ width } height={ height } gravity="0.5" numberOfPieces="100" />
   </>
 }
 
-function Square( { letter, colors, onSquareClick } ) {
+function Square({ letter, colors, onSquareClick }) {
   let color = letter.length > 0 && colors != null ? colors[letter.charCodeAt(0) - "A".charCodeAt(0)] : "";
   return <button key={letter} className={`square ${color}`} onClick={onSquareClick}>{letter}</ button>;
 }
 
-function Word( { attempt, success, revealed } ) {
+function Word({ attempt, success, revealed }) {
   let color = "";
   let success_animation = "";
   const indices: number[] = [0, 1, 2, 3, 4];
@@ -70,7 +70,7 @@ function Word( { attempt, success, revealed } ) {
   </>
 }
 
-function Logo( { success } ) {
+function Logo({ success }) {
   const animation = success ? "animate__animated animate__shakeY" : "animate__animated animate__tada";
 
   return <>
@@ -88,7 +88,7 @@ function Credits() {
   </>
 }
 
-function Score( { score } ) {
+function Score({ score }) {
   return <>
     <div id="score">
       <p>score: {score}</p>
@@ -96,7 +96,7 @@ function Score( { score } ) {
   </>
 }
 
-function Definition( { term }) {
+function Definition({ term }) {
   return <>
     <div id="definition" key={ term.word } className="animate__animated animate__fadeInDown">
       <p >{ term.definition }</p>
@@ -110,7 +110,7 @@ function Status( { status } ) {
   </>
 }
 
-function KeyboardRow( { start, finish, keyboard_colors, add_letter }) {
+function KeyboardRow({ start, finish, keyboard_colors, add_letter }) {
   start = Number(start);
   finish = Number(finish);
 
@@ -125,12 +125,23 @@ function KeyboardRow( { start, finish, keyboard_colors, add_letter }) {
   </>
 }
 
-function Keyboard( { keyboard_colors, add_letter }) {
+function Keyboard({ keyboard_colors, add_letter }) {
   return <>
     <div id="keyboard-container">
       <KeyboardRow start="0" finish="10" keyboard_colors={ keyboard_colors } add_letter={ add_letter } />
       <KeyboardRow start="10" finish="19" keyboard_colors={ keyboard_colors } add_letter={ add_letter } />
       <KeyboardRow start="19" finish="26" keyboard_colors={ keyboard_colors } add_letter={ add_letter } />
+    </div>
+  </>
+}
+
+function Actions({ check, next, reveal, delete_letter }) {
+  return <>
+    <div id="actions">
+      <button key="check" onClick={ check }>check</button>
+      <button key="next" onClick={ next }>next</button>
+      <button key="reveal" onClick={ reveal }>reveal</button>
+      <button key="delete" onClick={ delete_letter }>delete</button>
     </div>
   </>
 }
@@ -159,7 +170,6 @@ function App() {
   const [keyboard_colors, setKeyboardColors] = useState(Array(26).fill("square-unattempted"));
   const [status, setStatus] = useState('');
   const [attempts, setAttempts] = useState([]);
-  const [confetti, setConfetti] = useState(false);
 
   function addLetter(letter: string) {
     if (attempt.length == term.word.length){
@@ -220,9 +230,6 @@ function App() {
 
     if (attempt.toLowerCase() == term.word) {
       if (!success) setScore(score + 100);
-
-      setConfetti(true);
-      setTimeout(() => { setConfetti(false); }, 4000);
       setSuccess(true);
     }
  }
@@ -250,7 +257,6 @@ function App() {
     setTerm(get_random_term(5));
     setAttempt("");
     setAttempts([]);
-    setConfetti(false);
     setKeyboardColors(Array(26).fill("square-unattempted"));
   }
 
@@ -284,7 +290,7 @@ function App() {
   return (
     <>
       <div>
-        <MyConfetti confetti={ confetti } />
+        <MyConfetti success={ success } />
         <Credits />
         <Logo success={ success } />
         <Definition term={ term } />
@@ -294,13 +300,7 @@ function App() {
 
         <div id="controls">
           <Keyboard keyboard_colors={ keyboard_colors } add_letter={ addLetter } />
-
-          <div id="actions">
-            <button key="check" onClick={ checkAttempt }>check</button>
-            <button key="next" onClick={ next }>next</button>
-            <button key="reveal" onClick={ reveal }>reveal</button>
-            <button key="delete" onClick={ removeLetter }>delete</button>
-          </div>
+          <Actions check={ checkAttempt } next={ next } reveal={ reveal } delete_letter={ removeLetter } />
         </div>
       </div>
     </>
