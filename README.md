@@ -20,6 +20,9 @@ Desktop version allows you to use keyboard shortcuts for all actions:
 4. reveal solution when you don't know the answer by pressing `Shift` (or press the button `reveal`);
 5. pick another word/definition by pressing `Esc` (or press the button `next`).
 
+Currently, every correct attempt gives 100 points.
+For now, you don't lose point, you can only increase your score.
+
 Demo
 ----------
 Go to https://erudite-demo.deno.dev
