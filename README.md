@@ -14,11 +14,11 @@ You have to figure out what is the word based on the definition presented.
 If you make an incorrect guess, any correct letter will be highlighted in green in the UI.
 
 Desktop version allows you to use keyboard shortcuts for all actions:
-1. simply type the word with your keyboard;
-2. delete a letter by pressing `Backspace`;
-3. check if word is correct by pressing `Enter`;
-4. reveal solution when you don't know the answer by pressing `Shift`;
-5. pick another word/definition by pressing `Esc`.
+1. simply type the word with your keyboard (or use the keyboard in the UI);
+2. delete a letter by pressing `Backspace` (or press the button `delete`);
+3. check if word is correct by pressing `Enter` (or press the button `check`);
+4. reveal solution when you don't know the answer by pressing `Shift` (or press the button `reveal`);
+5. pick another word/definition by pressing `Esc` (or press the button `next`).
 
 Demo
 ----------
