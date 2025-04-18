@@ -11,7 +11,7 @@ I'm developing this game for some reasons:
 2. practice some javascript/typescript (specially interested in the promising [deno](https://github.com/denoland) runtime);
 3. Having fun.
 
-How it works
+How to play
 ------------
 You have to figure out what is the word based on the definition presented.
 
