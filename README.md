@@ -1,5 +1,9 @@
 Erudite
 =======
+
+<img width="730" alt="Screenshot 2025-04-18 at 12 54 05" src="https://github.com/user-attachments/assets/90debef8-964b-409d-bd47-863d7c1b26ca" />
+
+
 This is a simple word game, inspired by daily [NYT games](https://www.nytco.com/products/games/), specially [Wordle](https://www.nytimes.com/games/wordle/index.html).
 
 I'm developing this game for some reasons: 
